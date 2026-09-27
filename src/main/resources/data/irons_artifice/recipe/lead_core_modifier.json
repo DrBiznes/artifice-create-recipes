@@ -1,0 +1,41 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "item": "minecraft:deepslate_bricks"
+    },
+    {
+      "tag": "c:plates/iron"
+    },
+    {
+      "tag": "c:plates/iron"
+    },
+    {
+      "tag": "c:plates/iron"
+    },
+    {
+      "item": "create:andesite_alloy"
+    },
+    {
+      "item": "create:andesite_alloy"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:lead_core_modifier",
+      "count": 1
+    }
+  ]
+}

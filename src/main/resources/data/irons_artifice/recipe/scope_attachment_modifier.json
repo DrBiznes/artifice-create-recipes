@@ -1,0 +1,63 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "irons_artifice:simple_mechanical_components"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_scope_attachment_modifier"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_scope_attachment_modifier"
+        },
+        {
+          "item": "minecraft:spyglass"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_scope_attachment_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_scope_attachment_modifier"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_scope_attachment_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_scope_attachment_modifier"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_scope_attachment_modifier"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:scope_attachment_modifier",
+      "count": 1
+    }
+  ]
+}

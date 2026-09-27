@@ -1,0 +1,93 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "irons_artifice:simple_mechanical_components"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_hair_trigger_modifier"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_hair_trigger_modifier"
+        },
+        {
+          "tag": "c:plates/copper"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_hair_trigger_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_hair_trigger_modifier"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_hair_trigger_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_hair_trigger_modifier"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_hair_trigger_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:cutting",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_hair_trigger_modifier"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_hair_trigger_modifier"
+        }
+      ],
+      "processing_time": 50
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_hair_trigger_modifier"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_hair_trigger_modifier"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:hair_trigger_modifier",
+      "count": 1
+    }
+  ]
+}

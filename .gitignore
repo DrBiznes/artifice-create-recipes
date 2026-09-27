@@ -1,0 +1,15 @@
+.gradle/
+build/
+run/
+run-data/
+run-gametest/
+__pycache__/
+.research/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+bin/
+libs/*.jar
+src/generated/resources/.cache/

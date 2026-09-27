@@ -1,0 +1,41 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "tag": "c:plates/copper"
+    },
+    {
+      "tag": "c:plates/copper"
+    },
+    {
+      "tag": "c:plates/brass"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "minecraft:lightning_rod"
+    },
+    {
+      "item": "minecraft:lightning_rod"
+    },
+    {
+      "item": "minecraft:lightning_rod"
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:voltaic_core_modifier",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "artifice_create_recipes:item/incomplete_scope_attachment_modifier"
+  }
+}

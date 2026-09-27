@@ -1,0 +1,63 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "minecraft:iron_sword"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_bayonet_attachment_modifier"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_bayonet_attachment_modifier"
+        },
+        {
+          "item": "irons_artifice:simple_mechanical_components"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_bayonet_attachment_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_bayonet_attachment_modifier"
+        },
+        {
+          "item": "create:andesite_alloy"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_bayonet_attachment_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_bayonet_attachment_modifier"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_bayonet_attachment_modifier"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:bayonet_attachment_modifier",
+      "count": 1
+    }
+  ]
+}

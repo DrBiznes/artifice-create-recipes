@@ -1,0 +1,32 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "tag": "c:plates/copper"
+    },
+    {
+      "tag": "c:plates/brass"
+    },
+    {
+      "item": "minecraft:wind_charge"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:wind_chamber_modifier",
+      "count": 1
+    }
+  ]
+}

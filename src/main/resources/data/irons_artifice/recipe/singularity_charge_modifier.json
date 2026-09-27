@@ -1,0 +1,42 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "minecraft:amethyst_shard"
+    },
+    {
+      "item": "minecraft:amethyst_shard"
+    },
+    {
+      "item": "minecraft:amethyst_shard"
+    },
+    {
+      "item": "minecraft:amethyst_shard"
+    },
+    {
+      "item": "minecraft:ender_eye"
+    },
+    {
+      "tag": "c:plates/brass"
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:singularity_charge_modifier",
+      "count": 1
+    }
+  ],
+  "processing_time": 100
+}

@@ -1,0 +1,237 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "minecraft:logs"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_musket"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_musket"
+        },
+        {
+          "item": "irons_artifice:simple_mechanical_components"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_musket"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_musket"
+        },
+        {
+          "tag": "minecraft:logs"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_musket"
+        }
+      ]
+    },
+    {
+      "type": "create:cutting",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_musket"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_musket"
+        }
+      ],
+      "processing_time": 50
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_musket"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_musket"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_musket"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_musket"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_musket"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_musket"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_musket"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_musket"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_musket"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_musket"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_musket"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_musket"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_musket"
+        },
+        {
+          "item": "create:andesite_alloy"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_musket"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_musket"
+        },
+        {
+          "item": "create:andesite_alloy"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_musket"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_musket"
+        },
+        {
+          "item": "minecraft:flint"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_musket"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_musket"
+        },
+        {
+          "item": "irons_artifice:blackpowder"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_musket"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_musket"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_musket"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:musket",
+      "count": 1
+    }
+  ]
+}

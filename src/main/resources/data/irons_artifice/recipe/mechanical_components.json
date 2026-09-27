@@ -1,0 +1,127 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "irons_artifice:simple_mechanical_components"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_mechanical_components"
+  },
+  "loops": 2,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_mechanical_components"
+        },
+        {
+          "tag": "c:plates/brass"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_mechanical_components"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_mechanical_components"
+        },
+        {
+          "item": "create:large_cogwheel"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_mechanical_components"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_mechanical_components"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_mechanical_components"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_mechanical_components"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_mechanical_components"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_mechanical_components"
+        },
+        {
+          "item": "create:andesite_alloy"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_mechanical_components"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_mechanical_components"
+        },
+        {
+          "item": "minecraft:redstone"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_mechanical_components"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_mechanical_components"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_mechanical_components"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:mechanical_components",
+      "count": 1
+    }
+  ]
+}

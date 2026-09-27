@@ -1,0 +1,111 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "irons_artifice:clockwork_components"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_suppressor_attachment_modifier"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_suppressor_attachment_modifier"
+        },
+        {
+          "tag": "c:leathers"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_suppressor_attachment_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_suppressor_attachment_modifier"
+        },
+        {
+          "tag": "c:leathers"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_suppressor_attachment_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_suppressor_attachment_modifier"
+        },
+        {
+          "tag": "c:plates/gold"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_suppressor_attachment_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_suppressor_attachment_modifier"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_suppressor_attachment_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_suppressor_attachment_modifier"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_suppressor_attachment_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_suppressor_attachment_modifier"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_suppressor_attachment_modifier"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:suppressor_attachment_modifier",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "minecraft:logs"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_clockwork_rifle"
+        },
+        {
+          "tag": "c:ingots/netherite"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_clockwork_rifle"
+        },
+        {
+          "tag": "minecraft:logs"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ]
+    },
+    {
+      "type": "create:cutting",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ],
+      "processing_time": 50
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_clockwork_rifle"
+        },
+        {
+          "item": "irons_artifice:clockwork_components"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_clockwork_rifle"
+        },
+        {
+          "item": "minecraft:hopper"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_clockwork_rifle"
+        },
+        {
+          "item": "minecraft:repeater"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_clockwork_rifle"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_clockwork_rifle"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_clockwork_rifle"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_clockwork_rifle"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_clockwork_rifle"
+        },
+        {
+          "tag": "c:plates/brass"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_clockwork_rifle"
+        },
+        {
+          "tag": "c:plates/brass"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_clockwork_rifle"
+        },
+        {
+          "item": "create:andesite_alloy"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_clockwork_rifle"
+        },
+        {
+          "item": "create:andesite_alloy"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_clockwork_rifle"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:clockwork_rifle",
+      "count": 1
+    }
+  ]
+}

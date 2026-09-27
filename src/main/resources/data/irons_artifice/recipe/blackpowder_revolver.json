@@ -1,0 +1,205 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "minecraft:logs"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_blackpowder_revolver"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        },
+        {
+          "item": "irons_artifice:mechanical_components"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        }
+      ]
+    },
+    {
+      "type": "create:cutting",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        }
+      ],
+      "processing_time": 50
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        },
+        {
+          "item": "minecraft:hopper"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        },
+        {
+          "tag": "c:plates/brass"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        },
+        {
+          "item": "create:andesite_alloy"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        },
+        {
+          "item": "create:andesite_alloy"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        },
+        {
+          "item": "irons_artifice:blackpowder"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_blackpowder_revolver"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:blackpowder_revolver",
+      "count": 1
+    }
+  ]
+}

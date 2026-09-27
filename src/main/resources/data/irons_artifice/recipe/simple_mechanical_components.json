@@ -1,0 +1,95 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "c:plates/copper"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_simple_mechanical_components"
+  },
+  "loops": 2,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_simple_mechanical_components"
+        },
+        {
+          "item": "create:andesite_alloy"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_simple_mechanical_components"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_simple_mechanical_components"
+        },
+        {
+          "item": "create:cogwheel"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_simple_mechanical_components"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_simple_mechanical_components"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_simple_mechanical_components"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_simple_mechanical_components"
+        },
+        {
+          "item": "irons_artifice:blackpowder"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_simple_mechanical_components"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_simple_mechanical_components"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_simple_mechanical_components"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:simple_mechanical_components",
+      "count": 1
+    }
+  ]
+}

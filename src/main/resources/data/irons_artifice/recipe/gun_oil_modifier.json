@@ -1,0 +1,52 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "irons_artifice:simple_mechanical_components"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_gun_oil_modifier"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_gun_oil_modifier"
+        },
+        {
+          "item": "minecraft:redstone"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_gun_oil_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_gun_oil_modifier"
+        },
+        {
+          "type": "neoforge:tag",
+          "tag": "c:honey",
+          "amount": 250
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_gun_oil_modifier"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:gun_oil_modifier",
+      "count": 1
+    }
+  ]
+}

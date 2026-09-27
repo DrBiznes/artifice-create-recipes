@@ -1,0 +1,79 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "c:plates/copper"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_copper_bullet_batch"
+  },
+  "loops": 2,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_copper_bullet_batch"
+        },
+        {
+          "item": "irons_artifice:blackpowder"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_copper_bullet_batch"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_copper_bullet_batch"
+        },
+        {
+          "item": "irons_artifice:blackpowder"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_copper_bullet_batch"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_copper_bullet_batch"
+        },
+        {
+          "item": "irons_artifice:blackpowder"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_copper_bullet_batch"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_copper_bullet_batch"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_copper_bullet_batch"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:bullet",
+      "count": 6
+    }
+  ]
+}

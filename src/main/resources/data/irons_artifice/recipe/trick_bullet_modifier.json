@@ -1,0 +1,35 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "item": "minecraft:gold_block"
+    },
+    {
+      "tag": "c:plates/gold"
+    },
+    {
+      "tag": "c:plates/gold"
+    },
+    {
+      "tag": "c:plates/brass"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:trick_bullet_modifier",
+      "count": 1
+    }
+  ]
+}

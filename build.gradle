@@ -1,0 +1,112 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.147'
+    id 'idea'
+}
+
+version = mod_version
+group = mod_group_id
+base { archivesName = mod_id }
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.withSourcesJar()
+
+sourceSets {
+    gametest {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+repositories {
+    maven {
+        url = 'https://maven.createmod.net'
+        content {
+            includeGroup 'com.simibubi.create'
+        }
+    }
+    maven {
+        url = 'https://code.redspace.io/releases'
+        content { includeGroup 'io.redspace' }
+    }
+    maven {
+        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content { includeGroupAndSubgroups 'software.bernie.geckolib' }
+    }
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+    exclude '**/.cache/**'
+}
+
+neoForge {
+    version = project.neo_version
+    addModdingDependenciesTo sourceSets.gametest
+    runs {
+        client { client() }
+        server {
+            server()
+            programArgument '--nogui'
+        }
+        data {
+            data()
+            gameDirectory = file('run-data')
+            programArguments.addAll '--mod', project.mod_id, '--all',
+                    '--output', file('src/generated/resources').absolutePath,
+                    '--existing', file('src/main/resources').absolutePath
+        }
+        gameTestServer {
+            type = 'gameTestServer'
+            sourceSet = sourceSets.gametest
+            gameDirectory = file('run-gametest')
+            systemProperty 'neoforge.enabledGameTestNamespaces', 'artifice_create_recipes_tests'
+        }
+        configureEach { logLevel = org.slf4j.event.Level.INFO }
+    }
+    mods {
+        "${mod_id}" { sourceSet sourceSets.main }
+        artifice_create_recipes_tests { sourceSet sourceSets.gametest }
+    }
+    runs.configureEach {
+        if (name != 'gameTestServer') {
+            loadedMods = [mods.getByName(project.mod_id)]
+        }
+    }
+}
+
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+    gametestRuntimeClasspath.extendsFrom localRuntime
+}
+
+dependencies {
+    gametestCompileOnly("com.simibubi.create:create-${minecraft_version}:${create_version}") { transitive = false }
+    // Recipes reference registry IDs; no upstream Java API is needed yet.
+    // Explicit runtime pins avoid pulling the upstream Artifice development
+    // dependencies (Aeronautics/Sable) or changing versions via Maven ranges.
+    // The published Create jar bundles Registrate, Ponder, and Flywheel;
+    // Artifice bundles Sable Companion. NeoForge loads those nested jars.
+    localRuntime("com.simibubi.create:create-${minecraft_version}:${create_version}") { transitive = false }
+    localRuntime("io.redspace:irons_artifice:${irons_artifice_version}") { transitive = false }
+    localRuntime("io.redspace:irons_lib:${irons_lib_version}") { transitive = false }
+    localRuntime("software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}") { transitive = false }
+}
+
+def generateModMetadata = tasks.register('generateModMetadata', ProcessResources) {
+    def properties = [
+            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license,
+            mod_version: mod_version, minecraft_version_range: minecraft_version_range,
+            neo_version_range: neo_version_range, loader_version_range: loader_version_range,
+            create_version_range: create_version_range,
+            irons_artifice_version_range: irons_artifice_version_range
+    ]
+    inputs.properties properties
+    expand properties
+    from 'src/main/templates'
+    into 'build/generated/sources/modMetadata'
+}
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+idea.module { downloadSources = true }

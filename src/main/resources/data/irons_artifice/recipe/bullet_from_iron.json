@@ -1,0 +1,95 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "c:plates/iron"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_iron_bullet_batch"
+  },
+  "loops": 6,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_iron_bullet_batch"
+        },
+        {
+          "item": "irons_artifice:blackpowder"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_iron_bullet_batch"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_iron_bullet_batch"
+        },
+        {
+          "item": "irons_artifice:blackpowder"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_iron_bullet_batch"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_iron_bullet_batch"
+        },
+        {
+          "item": "irons_artifice:blackpowder"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_iron_bullet_batch"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_iron_bullet_batch"
+        },
+        {
+          "item": "irons_artifice:blackpowder"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_iron_bullet_batch"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_iron_bullet_batch"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_iron_bullet_batch"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:bullet",
+      "count": 24
+    }
+  ]
+}

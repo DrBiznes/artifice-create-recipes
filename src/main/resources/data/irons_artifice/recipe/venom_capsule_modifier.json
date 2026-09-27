@@ -1,0 +1,27 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "irons_artifice:bullet"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "minecraft:spider_eye"
+    },
+    {
+      "item": "minecraft:spider_eye"
+    },
+    {
+      "item": "minecraft:spider_eye"
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:venom_capsule_modifier",
+      "count": 1
+    }
+  ],
+  "processing_time": 100
+}
