@@ -1,5 +1,3 @@
-![Artifice Create Recipes](docs/banner.png)
-
 # Artifice Create Recipes
 
 A NeoForge 1.21.1 addon that replaces [Iron's Arms 'n Artifice](https://modrinth.com/mod/irons-artifice) crafting recipes with [Create](https://modrinth.com/mod/create) assembly lines, mixing, and compacting. Guns, bullets, and components have to come out of a factory. It is required on both the client and the server. Hat recipes are unchanged.
@@ -61,7 +59,3 @@ Sequenced assembly steps are deployer steps unless marked **Saw** (cutting), **P
 
 - [Create](https://modrinth.com/mod/create) by the Creators of Create: machines and processing recipes.
 - [Iron's Arms 'n Artifice](https://modrinth.com/mod/irons-artifice) by iron431: the guns, ammo, and modifiers this addon rebalances.
-- [NeoForge](https://neoforged.net/): mod loader.
-- [Rye](https://fonts.google.com/specimen/Rye) by Nicole Fally (SIL Open Font License): banner lettering.
-
-All workpiece sprites, the icon, and the banner are original artwork drawn by the scripts in `tools/`.
