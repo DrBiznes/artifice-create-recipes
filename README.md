@@ -1,4 +1,5 @@
-![Artifice Create Recipes](docs/banner.png)
+<img width="1500" height="500" alt="banner" src="https://github.com/user-attachments/assets/b02c6a58-e8f7-45dd-a896-17f58c6168ae" />
+
 
 # Artifice Create Recipes
 
@@ -61,7 +62,5 @@ Sequenced assembly steps are deployer steps unless marked **Saw** (cutting), **P
 
 - [Create](https://modrinth.com/mod/create) by the Creators of Create: machines and processing recipes.
 - [Iron's Arms 'n Artifice](https://modrinth.com/mod/irons-artifice) by iron431: the guns, ammo, and modifiers this addon rebalances.
-- [NeoForge](https://neoforged.net/): mod loader.
-- [Rye](https://fonts.google.com/specimen/Rye) by Nicole Fally (SIL Open Font License): banner lettering.
 
 All workpiece sprites, the icon, and the banner are original artwork drawn by the scripts in `tools/`.
