@@ -62,5 +62,3 @@ Sequenced assembly steps are deployer steps unless marked **Saw** (cutting), **P
 
 - [Create](https://modrinth.com/mod/create) by the Creators of Create: machines and processing recipes.
 - [Iron's Arms 'n Artifice](https://modrinth.com/mod/irons-artifice) by iron431: the guns, ammo, and modifiers this addon rebalances.
-
-All workpiece sprites, the icon, and the banner are original artwork drawn by the scripts in `tools/`.
