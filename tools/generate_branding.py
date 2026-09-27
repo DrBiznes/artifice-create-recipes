@@ -61,8 +61,6 @@ def title(canvas, text, center, size, fill=CREAM):
     f = font(size)
     d = ImageDraw.Draw(canvas)
     stroke = max(2, size // 14)
-    d.text((center[0] + stroke, center[1] + stroke * 2), text, font=f, anchor='mm',
-           fill=INK, stroke_width=stroke, stroke_fill=INK)
     d.text(center, text, font=f, anchor='mm', fill=fill, stroke_width=stroke, stroke_fill=INK)
 
 
