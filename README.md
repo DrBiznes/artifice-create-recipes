@@ -1,6 +1,3 @@
-<img width="1500" height="500" alt="banner" src="https://github.com/user-attachments/assets/b02c6a58-e8f7-45dd-a896-17f58c6168ae" />
-
-
 # Artifice Create Recipes
 
 A NeoForge 1.21.1 addon that replaces [Iron's Arms 'n Artifice](https://modrinth.com/mod/irons-artifice) crafting recipes with [Create](https://modrinth.com/mod/create) assembly lines, mixing, and compacting. Guns, bullets, and components have to come out of a factory. It is required on both the client and the server. Hat recipes are unchanged.
