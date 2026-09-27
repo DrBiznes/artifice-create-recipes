@@ -1,95 +1,67 @@
+![Artifice Create Recipes](docs/banner.png)
+
 # Artifice Create Recipes
 
-NeoForge **Minecraft 1.21.1** addon for Create manufacturing recipes for **Iron's Arms 'n Artifice**.
+A NeoForge 1.21.1 addon that replaces [Iron's Arms 'n Artifice](https://modrinth.com/mod/irons-artifice) crafting recipes with [Create](https://modrinth.com/mod/create) assembly lines, mixing, and compacting. Guns, bullets, and components have to come out of a factory. It is required on both the client and the server. Hat recipes are unchanged.
 
-Replaces 44 Artifice crafting recipes with **23 sequenced assemblies, 11 basin compacting recipes, and 10 mixing recipes**. Both hat recipes remain unchanged. All guns, both ammunition routes, and all three mechanical component tiers now require assembly lines. Includes 23 inert incomplete items with original, code-generated 16 x 16 textures and a creative workpiece tab.
+Requires NeoForge 21.1.248+, Create 6.0.10+, and Iron's Arms 'n Artifice. Development notes are in [docs/development.md](docs/development.md), and the full design rationale is in [docs/final-recipe-proposal.md](docs/final-recipe-proposal.md).
 
-## Recipes and artwork
+## Recipes
 
-- [Implemented recipe specification](docs/final-recipe-proposal.md): complete replacement set, wood and material costs, assembly loops, and all 29 modifiers.
-- [Workpiece texture contact sheet](docs/workpiece-textures.png): enlarged nearest-neighbor previews of the 23 original sprites.
-- [Earlier alternatives and Create machine capabilities](docs/recipe-design.md): retained as research context; superseded by the final proposal.
-- [Existing recipe inventory](docs/existing-recipes.md): all 46 recipes and their exact ingredient counts from the local Artifice checkout.
+Sequenced assembly steps are deployer steps unless marked **Saw** (cutting), **Press** (pressing), or **Fill** (spout).
 
-Iron ammunition consumes one sheet and **24 blackpowder** over six passes, producing 24 bullets. Copper consumes one sheet and six blackpowder over two passes, producing six. Wood is consumed by every gun, including a second log for long guns. Assembly products are guaranteed; unfinished products have no gun/modifier functionality. Processing recipes use the original Artifice IDs, so they replace the crafting routes. Their obsolete crafting-recipe unlock advancements are suppressed; hats and gameplay advancements remain intact.
+| Output | Machine | Inputs |
+| --- | --- | --- |
+| Blackpowder | Mixing | 2× Charcoal |
+| 3× Blackpowder | Mixing | Charcoal, Redstone |
+| 8× Blackpowder | Mixing | Charcoal, Redstone, Gunpowder |
+| 24× Bullet | Sequenced Assembly, 6 loops | Iron Sheet → Blackpowder ×4 → Press |
+| 6× Bullet | Sequenced Assembly, 2 loops | Copper Sheet → Blackpowder ×3 → Press |
+| Simple Mechanical Components | Sequenced Assembly, 2 loops | Copper Sheet → Andesite Alloy → Cogwheel → Iron Sheet → Blackpowder → Press |
+| Mechanical Components | Sequenced Assembly, 2 loops | Simple Mechanical Components → Brass Sheet → Large Cogwheel → Iron Sheet ×2 → Andesite Alloy → Redstone → Press |
+| Clockwork Components | Sequenced Assembly | Mechanical Components → Precision Mechanism → Mechanical Components → Brass Sheet ×4 → Golden Sheet ×2 → Press |
+| Flintlock | Sequenced Assembly | Log → Flint → Saw → Iron Sheet ×4 → Andesite Alloy ×2 → Blackpowder → Press |
+| Musket | Sequenced Assembly | Log → Simple Mechanical Components → Log → Saw → Iron Sheet ×6 → Andesite Alloy ×2 → Flint → Blackpowder → Press |
+| Blunderbuss | Sequenced Assembly | Log → Copper Sheet → Log → Saw → Simple Mechanical Components ×2 → Iron Sheet ×8 → Andesite Alloy ×2 → Press |
+| Blackpowder Revolver | Sequenced Assembly | Log → Mechanical Components → Saw → Hopper → Iron Sheet ×4 → Brass Sheet → Andesite Alloy ×2 → Blackpowder → Press |
+| Six Shooter | Sequenced Assembly | Log → Brass Sheet → Saw → Mechanical Components → Hopper → Iron Sheet ×4 → Brass Sheet → Andesite Alloy ×2 → Press |
+| Arquebus | Sequenced Assembly | Log → Clockwork Components → Log → Saw → Iron Sheet ×6 → Brass Sheet ×2 → Andesite Alloy ×2 → Blackpowder → Press |
+| Clockwork Rifle | Sequenced Assembly | Log → Netherite Ingot → Log → Saw → Clockwork Components → Hopper → Repeater → Iron Sheet ×4 → Brass Sheet ×2 → Andesite Alloy ×2 → Press |
+| Hair Trigger Modifier | Sequenced Assembly | Simple Mechanical Components → Copper Sheet → Iron Sheet ×2 → Saw → Press |
+| Buffer Spring Modifier | Sequenced Assembly | Simple Mechanical Components → Iron Sheet ×6 → Andesite Alloy ×2 → Saw → Press |
+| Gas Vent Modifier | Sequenced Assembly | Simple Mechanical Components → Hopper → Simple Mechanical Components → Iron Sheet ×2 → Press |
+| Mechanical Accelerator Modifier | Sequenced Assembly | Mechanical Components → Chain ×2 → Copper Sheet ×2 → Shaft ×2 → Press |
+| Mechanical Repeater Modifier | Sequenced Assembly | Clockwork Components → Chain ×2 → Brass Sheet ×2 → Golden Sheet ×2 → Press |
+| Scope Attachment Modifier | Sequenced Assembly | Simple Mechanical Components → Spyglass → Iron Sheet → Press |
+| Bayonet Attachment Modifier | Sequenced Assembly | Iron Sword → Simple Mechanical Components → Andesite Alloy → Press |
+| Suppressor Attachment Modifier | Sequenced Assembly | Clockwork Components → Leather ×2 → Golden Sheet → Iron Sheet ×2 → Press |
+| Gun Oil Modifier | Sequenced Assembly | Simple Mechanical Components → Redstone → Fill 250 mB Honey |
+| Chain Shot Modifier | Sequenced Assembly | Bullet → Chain ×5 → Bullet → Andesite Alloy → Press |
+| Hook Shot Modifier | Sequenced Assembly | Bullet → Iron Sheet ×4 → Chain ×2 → Andesite Alloy ×2 → Press |
+| Blackpowder Charge Modifier | Compacting | 8× Blackpowder, 2× String |
+| Scattershot Modifier | Compacting | 4× Bullet, 4× Blackpowder, 2× String |
+| Breaching Shell Modifier | Compacting | 2× Copper Sheet, 2× Iron Sheet, 4× Blackpowder, 3× Flint |
+| Incendiary Tip Modifier | Compacting | 3× Iron Sheet, 4× Blackpowder, 3× Blaze Powder |
+| Frozen Jacket Modifier | Compacting | 3× Iron Sheet, 4× Blackpowder, 3× Blue Ice |
+| Voltaic Core Modifier | Compacting | 2× Copper Sheet, Brass Sheet, 4× Blackpowder, 3× Lightning Rod |
+| Steel Core Modifier | Compacting | Iron Block, 3× Iron Sheet, 4× Blackpowder |
+| Lead Core Modifier | Compacting | Deepslate Bricks, 3× Iron Sheet, 2× Andesite Alloy, 4× Blackpowder |
+| Trick Bullet Modifier | Compacting | Gold Block, 2× Golden Sheet, Brass Sheet, 4× Blackpowder |
+| Spiral Tip Modifier | Compacting | 2× Iron Sheet, Brass Sheet, Nautilus Shell, 4× Blackpowder |
+| Wind Chamber Modifier | Compacting | Copper Sheet, Brass Sheet, Wind Charge, 4× Blackpowder |
+| Antigravity Powder Modifier | Mixing | 4× Blackpowder, Ender Pearl |
+| Seeking Powder Modifier | Mixing | 4× Blackpowder, Amethyst Cluster |
+| Overcharged Powder Modifier | Mixing (heated) | 8× Blackpowder, Redstone Block, 2× Blaze Powder |
+| Enchanted Bullet Modifier | Mixing | Bullet, 4× Blackpowder, 3× Lapis Lazuli |
+| Singularity Charge Modifier | Mixing | 4× Blackpowder, 4× Amethyst Shard, Ender Eye, Brass Sheet |
+| Venom Capsule Modifier | Mixing | Bullet, Glass Bottle, 3× Spider Eye |
+| Bloodletting Tip Modifier | Mixing | 4× Blackpowder, 3× Quartz, Ghast Tear, Redstone |
 
-Install the built jar alongside Create, Artifice, and their normal required dependencies on Minecraft 1.21.1 NeoForge. Because the addon registers new items, install it on both client and server. Existing finished equipment is not changed.
+## Attribution
 
-## Development
+- [Create](https://modrinth.com/mod/create) by the Creators of Create: machines and processing recipes.
+- [Iron's Arms 'n Artifice](https://modrinth.com/mod/irons-artifice) by iron431: the guns, ammo, and modifiers this addon rebalances.
+- [NeoForge](https://neoforged.net/): mod loader.
+- [Rye](https://fonts.google.com/specimen/Rye) by Nicole Fally (SIL Open Font License): banner lettering.
 
-Requires a **JDK 21**. Open this directory as a Gradle project in IntelliJ IDEA or another Java IDE.
-
-```powershell
-.\gradlew.bat build
-.\gradlew.bat runClient
-.\gradlew.bat runData
-.\gradlew.bat runServer
-.\gradlew.bat runGameTestServer
-```
-
-On Linux/macOS use `bash ./gradlew` in place of `.\gradlew.bat`. The server's Minecraft EULA must be handled by the operator before running a normal server.
-
-The build produces `build/libs/artifice_create_recipes-0.1.0-SNAPSHOT.jar`. Generated recipes/assets are checked in, so Java 21 and Gradle are sufficient to build. `runData` is an optional mod-loading check; this project generates its resources using the Python tools below instead of Java data providers.
-
-`runGameTestServer` loads a separate development-only test mod in an isolated `run-gametest` directory. It verifies the actual server recipe manager, tag resolution, removal of all original crafting bypasses, all 23 native Create assembly progressions, unambiguous starter selection, key material budgets, workpiece registration, and old advancement suppression. The tests and their structure are not packaged in the release jar. `build` alone does not launch the game tests.
-
-## Regenerating resources
-
-```powershell
-python tools/generate_recipes.py
-python tools/generate_textures.py
-python tools/verify_resources.py
-```
-
-Only texture generation requires Pillow (10.1 or later). Recipe generation and resource verification use Python's standard library. The texture generator draws original pixel geometry; it does not require or copy upstream texture files. Regeneration is deterministic. Edit the recipe generator and regenerate rather than manually editing its JSON, item-name manifest, models, or translations. Edit the texture generator for sprite changes.
-
-The generators write resources to `src/main/resources` and the item-name manifest to `src/main/java`. The resource verifier compares replacement coverage to the audited original recipe inventory and checks unique starter signatures, models, translations, and distinct 16 x 16 RGBA textures. Review the contact sheet after changing sprite geometry.
-
-The Gradle setup pins:
-
-| Component | Version |
-| --- | --- |
-| Java | 21 |
-| Minecraft | 1.21.1 |
-| NeoForge | 21.1.228, matching the local Artifice project |
-| ModDevGradle | 2.0.147 |
-| Gradle wrapper | 9.2.1 |
-| Create | 6.0.11-312 |
-| Iron's Arms 'n Artifice | 1.21.1-1.0.1.1 |
-| GeckoLib | 4.9.3 |
-| Iron's Library | 1.21.1-2.2.0 |
-| Registrate (bundled by Create) | MC1.21-1.3.0+67 |
-| Ponder (bundled by Create) | 1.0.85+mc1.21.1 |
-| Flywheel (bundled by Create) | 1.0.6 |
-
-Verified implementation: `build runGameTestServer --no-daemon` completed successfully on JDK 21; **all four required server tests passed**, including native progression through all 23 assemblies. Resource verification passed for all 44 replacements and 23 sprites. The jar was inspected to confirm recipes/textures are packaged and development tests are excluded. The test server's first run logged a missing `server.properties` before generating its defaults; upstream development refmap/annotation warnings were non-fatal. No recipe decode errors occurred.
-
-The assembly checks exercise Create's selection and advancement APIs against a live server registry; they do not simulate a complete moving belt factory. Graphical client rendering, JEI presentation, belt throughput, and survival balance still need playtesting.
-
-Runtime dependencies resolve from their upstream Maven repositories. Artifice's published dependency metadata also lists its development integrations (Aeronautics and Sable); this addon selects its required runtime libraries explicitly instead. Bundled dependencies inside upstream jars still load through NeoForge. No upstream jars are redistributed inside the addon.
-
-The local `../irons-artifice` repository was inspected as a read-only source of recipes. The dev runtime uses the published matching version, not the sibling checkout's Java sources. Changing that checkout will not change this addon's run configuration automatically.
-
-If Gradle on Windows reports `Unable to establish loopback connection` with `UnixDomainSockets.connect` in the stack trace, a long temporary-directory path can be the cause. A project-local temporary path worked in the setup environment:
-
-```powershell
-New-Item -ItemType Directory -Force .gradle/tmp | Out-Null
-$tempForGradle = (Resolve-Path .gradle/tmp).Path.Replace('\', '/')
-$env:JAVA_TOOL_OPTIONS = "-Djava.io.tmpdir=$tempForGradle -Djdk.net.unixdomain.tmpdir=$tempForGradle"
-.\gradlew.bat build runData --no-daemon
-```
-
-Use this in a dedicated terminal if `JAVA_TOOL_OPTIONS` already contains settings you need to retain. It changes only that terminal's environment.
-
-## Layout and provenance
-
-- `src/main/java`: NeoForge registration, inert workpiece item class, and generated item-name manifest.
-- `src/main/resources`: generated recipes, advancement overrides, models, translations, and textures. Minecraft 1.21.1 uses singular `recipe` directories.
-- `src/gametest`: development-only server tests and their empty structure.
-- `tools`: deterministic generators and resource verification.
-- `src/main/templates/META-INF/neoforge.mods.toml`: expanded mod metadata and required dependencies.
-- `src/generated/resources`: reserved for generated resources.
-- `docs`: design and source audit.
-- `.research`: ignored local source downloads; never packaged.
-
-Based on the [official NeoForge 1.21.1 ModDevGradle MDK](https://github.com/NeoForgeMDKs/MDK-1.21.1-ModDevGradle/tree/4e1be6e906e1b32a753e3580af4ea1bcc3dbc79e). The upstream wrapper, scripts, attributes, and `TEMPLATE_LICENSE.txt` are retained. Build and entry-point files are tailored to this addon. The addon retains the MDK's default All Rights Reserved setting until a project license is selected; upstream projects retain their own licenses.
+All workpiece sprites, the icon, and the banner are original artwork drawn by the scripts in `tools/`.
