@@ -79,22 +79,6 @@
           "item": "artifice_create_recipes:incomplete_mechanical_components"
         },
         {
-          "item": "create:andesite_alloy"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_mechanical_components"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_mechanical_components"
-        },
-        {
           "item": "minecraft:redstone"
         }
       ],

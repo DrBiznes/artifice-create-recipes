@@ -1,12 +1,12 @@
 {
   "type": "create:sequenced_assembly",
   "ingredient": {
-    "tag": "minecraft:logs"
+    "item": "irons_artifice:mechanical_components"
   },
   "transitional_item": {
     "id": "artifice_create_recipes:incomplete_six_shooter"
   },
-  "loops": 1,
+  "loops": 2,
   "sequence": [
     {
       "type": "create:deploying",
@@ -16,6 +16,54 @@
         },
         {
           "tag": "c:plates/brass"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_six_shooter"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_six_shooter"
+        },
+        {
+          "tag": "minecraft:logs"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_six_shooter"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_six_shooter"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_six_shooter"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_six_shooter"
+        },
+        {
+          "tag": "c:plates/iron"
         }
       ],
       "results": [
@@ -37,150 +85,6 @@
         }
       ],
       "processing_time": 50
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_six_shooter"
-        },
-        {
-          "item": "irons_artifice:mechanical_components"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_six_shooter"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_six_shooter"
-        },
-        {
-          "item": "minecraft:hopper"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_six_shooter"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_six_shooter"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_six_shooter"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_six_shooter"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_six_shooter"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_six_shooter"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_six_shooter"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_six_shooter"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_six_shooter"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_six_shooter"
-        },
-        {
-          "tag": "c:plates/brass"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_six_shooter"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_six_shooter"
-        },
-        {
-          "item": "create:andesite_alloy"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_six_shooter"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_six_shooter"
-        },
-        {
-          "item": "create:andesite_alloy"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_six_shooter"
-        }
-      ]
     },
     {
       "type": "create:pressing",

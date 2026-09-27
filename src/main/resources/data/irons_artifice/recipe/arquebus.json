@@ -1,12 +1,12 @@
 {
   "type": "create:sequenced_assembly",
   "ingredient": {
-    "tag": "minecraft:logs"
+    "item": "irons_artifice:clockwork_components"
   },
   "transitional_item": {
     "id": "artifice_create_recipes:incomplete_arquebus"
   },
-  "loops": 1,
+  "loops": 3,
   "sequence": [
     {
       "type": "create:deploying",
@@ -15,7 +15,7 @@
           "item": "artifice_create_recipes:incomplete_arquebus"
         },
         {
-          "item": "irons_artifice:clockwork_components"
+          "tag": "minecraft:logs"
         }
       ],
       "results": [
@@ -31,7 +31,39 @@
           "item": "artifice_create_recipes:incomplete_arquebus"
         },
         {
-          "tag": "minecraft:logs"
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_arquebus"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_arquebus"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_arquebus"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_arquebus"
+        },
+        {
+          "tag": "c:plates/brass"
         }
       ],
       "results": [
@@ -53,182 +85,6 @@
         }
       ],
       "processing_time": 50
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_arquebus"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_arquebus"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_arquebus"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_arquebus"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_arquebus"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_arquebus"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_arquebus"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_arquebus"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_arquebus"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_arquebus"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_arquebus"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_arquebus"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_arquebus"
-        },
-        {
-          "tag": "c:plates/brass"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_arquebus"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_arquebus"
-        },
-        {
-          "tag": "c:plates/brass"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_arquebus"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_arquebus"
-        },
-        {
-          "item": "create:andesite_alloy"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_arquebus"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_arquebus"
-        },
-        {
-          "item": "create:andesite_alloy"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_arquebus"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_arquebus"
-        },
-        {
-          "item": "irons_artifice:blackpowder"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_arquebus"
-        }
-      ]
     },
     {
       "type": "create:pressing",

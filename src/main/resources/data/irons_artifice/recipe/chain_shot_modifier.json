@@ -79,39 +79,7 @@
           "item": "artifice_create_recipes:incomplete_chain_shot_modifier"
         },
         {
-          "item": "minecraft:chain"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_chain_shot_modifier"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_chain_shot_modifier"
-        },
-        {
           "item": "irons_artifice:bullet"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_chain_shot_modifier"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_chain_shot_modifier"
-        },
-        {
-          "item": "create:andesite_alloy"
         }
       ],
       "results": [

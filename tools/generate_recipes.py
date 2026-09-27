@@ -49,6 +49,7 @@ ITEMS = {}
 
 
 def assembly(recipe_id, start, steps, loops=1, output=None, count=1, incomplete=None):
+    assert len(steps) <= 6, recipe_id + ' exceeds the six steps Create can display'
     item = incomplete or 'incomplete_' + recipe_id
     transitional = MOD + ':' + item
     ITEMS[item] = {'recipe': recipe_id, 'output': output or recipe_id}
@@ -87,34 +88,36 @@ basin('blackpowder_from_gunpowder', 'mixing', [('charcoal', 1), ('redstone', 1),
 assembly('bullet_from_iron', 'iron', D('powder', 4) + P, 6, 'bullet', 24, 'incomplete_iron_bullet_batch')
 assembly('bullet_from_copper', 'copper', D('powder', 3) + P, 2, 'bullet', 6, 'incomplete_copper_bullet_batch')
 assembly('simple_mechanical_components', 'copper', D('alloy') + D('cog') + D('iron') + D('powder') + P, 2)
-assembly('mechanical_components', 'simple', D('brass') + D('large_cog') + D('iron', 2) + D('alloy') + D('redstone') + P, 2)
-assembly('clockwork_components', 'mechanical', D('precision') + D('mechanical') + D('brass', 4) + D('gold', 2) + P)
+assembly('mechanical_components', 'simple', D('brass') + D('large_cog') + D('iron', 2) + D('redstone') + P, 2)
+assembly('clockwork_components', 'precision', D('mechanical') + D('brass', 2) + D('gold') + P, 2)
 
-# First deployment distinguishes recipes on a shared log starter. The opening
-# part is included in the total costs, and long guns consume their second log.
-assembly('flintlock', 'log', D('flint') + C + D('iron', 4) + D('alloy', 2) + D('powder') + P)
-assembly('musket', 'log', D('simple') + D('log') + C + D('iron', 6) + D('alloy', 2) + D('flint') + D('powder') + P)
-assembly('blunderbuss', 'log', D('copper') + D('log') + C + D('simple', 2) + D('iron', 8) + D('alloy', 2) + P)
-assembly('blackpowder_revolver', 'log', D('mechanical') + C + D('hopper') + D('iron', 4) + D('brass') + D('alloy', 2) + D('powder') + P)
-assembly('six_shooter', 'log', D('brass') + C + D('mechanical') + D('hopper') + D('iron', 4) + D('brass') + D('alloy', 2) + P)
-assembly('arquebus', 'log', D('clockwork') + D('log') + C + D('iron', 6) + D('brass', 2) + D('alloy', 2) + D('powder') + P)
-assembly('clockwork_rifle', 'log', D('netherite') + D('log') + C + D('clockwork') + D('hopper') + D('repeater') + D('iron', 4) + D('brass', 2) + D('alloy', 2) + P)
+# Create's viewer fits six steps, so costs repeat through loops and one-off
+# parts become the starting item. Short guns loop twice, long guns three times;
+# each loop deploys one log. Start + first deployment stay unique per recipe.
+WOOD = D('log') + D('iron', 2)
+assembly('flintlock', 'flint', WOOD + D('alloy') + C + P, 2)
+assembly('musket', 'simple', WOOD + D('alloy') + C + P, 3)
+assembly('blunderbuss', 'simple', D('alloy') + D('log') + D('copper') + D('iron') + C + P, 3)
+assembly('blackpowder_revolver', 'mechanical', WOOD + D('powder') + C + P, 2)
+assembly('six_shooter', 'mechanical', D('brass') + WOOD + C + P, 2)
+assembly('arquebus', 'clockwork', WOOD + D('brass') + C + P, 3)
+assembly('clockwork_rifle', 'clockwork', D('netherite_scrap') + D('log') + D('iron') + D('brass') + C + P, 3)
 
 ASSEMBLY_MODIFIERS = {
     'hair_trigger': ('simple', D('copper') + D('iron', 2) + C + P),
-    'buffer_spring': ('simple', D('iron', 6) + D('alloy', 2) + C + P),
+    'buffer_spring': ('simple', D('iron', 3) + D('alloy') + C + P, 2),
     'gas_vent': ('simple', D('hopper') + D('simple') + D('iron', 2) + P),
-    'mechanical_accelerator': ('mechanical', D('chain', 2) + D('copper', 2) + D('shaft', 2) + P),
-    'mechanical_repeater': ('clockwork', D('chain', 2) + D('brass', 2) + D('gold', 2) + P),
+    'mechanical_accelerator': ('mechanical', D('chain') + D('copper') + D('shaft') + P, 2),
+    'mechanical_repeater': ('clockwork', D('chain') + D('brass') + D('gold') + P, 2),
     'scope_attachment': ('simple', D('spyglass') + D('iron') + P),
     'bayonet_attachment': ('iron_sword', D('simple') + D('alloy') + P),
     'suppressor_attachment': ('clockwork', D('leather', 2) + D('gold') + D('iron', 2) + P),
     'gun_oil': ('simple', D('redstone') + HONEY),
-    'chain_shot': ('bullet', D('chain', 5) + D('bullet') + D('alloy') + P),
-    'hook_shot': ('bullet', D('iron', 4) + D('chain', 2) + D('alloy', 2) + P),
+    'chain_shot': ('bullet', D('chain', 4) + D('bullet') + P),
+    'hook_shot': ('bullet', D('iron', 2) + D('chain') + D('alloy') + P, 2),
 }
-for name, (start, steps) in ASSEMBLY_MODIFIERS.items():
-    assembly(name + '_modifier', start, steps)
+for name, (start, steps, *loops) in ASSEMBLY_MODIFIERS.items():
+    assembly(name + '_modifier', start, steps, *loops)
 
 COMPACTING = {
     'blackpowder_charge': [('powder', 8), ('string', 2)],

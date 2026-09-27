@@ -135,9 +135,9 @@ public final class FactoryTests {
         cost(h, "bullet_from_copper", "create:copper_sheet", 1);
         h.assertTrue(recipe(h, "bullet_from_iron").getResultItem(h.getLevel().registryAccess()).getCount() == 24, "24 iron bullets");
         h.assertTrue(recipe(h, "bullet_from_copper").getResultItem(h.getLevel().registryAccess()).getCount() == 6, "6 copper bullets");
-        for (String gun : List.of("flintlock", "blackpowder_revolver", "six_shooter")) cost(h, gun, "minecraft:oak_log", 1);
-        for (String gun : List.of("musket", "blunderbuss", "arquebus", "clockwork_rifle")) cost(h, gun, "minecraft:oak_log", 2);
-        cost(h, "clockwork_rifle", "minecraft:netherite_ingot", 1);
+        for (String gun : List.of("flintlock", "blackpowder_revolver", "six_shooter")) cost(h, gun, "minecraft:oak_log", 2);
+        for (String gun : List.of("musket", "blunderbuss", "arquebus", "clockwork_rifle")) cost(h, gun, "minecraft:oak_log", 3);
+        cost(h, "clockwork_rifle", "minecraft:netherite_scrap", 3);
         cost(h, "simple_mechanical_components", "create:copper_sheet", 1);
         cost(h, "simple_mechanical_components", "create:andesite_alloy", 2);
         cost(h, "mechanical_components", "irons_artifice:simple_mechanical_components", 1);

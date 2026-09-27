@@ -8,7 +8,7 @@ Requires NeoForge 21.1.248+, Create 6.0.10+, and Iron's Arms 'n Artifice. Develo
 
 ## Recipes
 
-Sequenced assembly steps are deployer steps unless marked **Saw** (cutting), **Press** (pressing), or **Fill** (spout).
+Sequenced assembly steps are deployer steps unless marked **Saw** (cutting), **Press** (pressing), or **Fill** (spout). The first item is the starting item; the rest of the sequence repeats once per loop.
 
 | Output | Machine | Inputs |
 | --- | --- | --- |
@@ -18,26 +18,26 @@ Sequenced assembly steps are deployer steps unless marked **Saw** (cutting), **P
 | 24× Bullet | Sequenced Assembly, 6 loops | Iron Sheet → Blackpowder ×4 → Press |
 | 6× Bullet | Sequenced Assembly, 2 loops | Copper Sheet → Blackpowder ×3 → Press |
 | Simple Mechanical Components | Sequenced Assembly, 2 loops | Copper Sheet → Andesite Alloy → Cogwheel → Iron Sheet → Blackpowder → Press |
-| Mechanical Components | Sequenced Assembly, 2 loops | Simple Mechanical Components → Brass Sheet → Large Cogwheel → Iron Sheet ×2 → Andesite Alloy → Redstone → Press |
-| Clockwork Components | Sequenced Assembly | Mechanical Components → Precision Mechanism → Mechanical Components → Brass Sheet ×4 → Golden Sheet ×2 → Press |
-| Flintlock | Sequenced Assembly | Log → Flint → Saw → Iron Sheet ×4 → Andesite Alloy ×2 → Blackpowder → Press |
-| Musket | Sequenced Assembly | Log → Simple Mechanical Components → Log → Saw → Iron Sheet ×6 → Andesite Alloy ×2 → Flint → Blackpowder → Press |
-| Blunderbuss | Sequenced Assembly | Log → Copper Sheet → Log → Saw → Simple Mechanical Components ×2 → Iron Sheet ×8 → Andesite Alloy ×2 → Press |
-| Blackpowder Revolver | Sequenced Assembly | Log → Mechanical Components → Saw → Hopper → Iron Sheet ×4 → Brass Sheet → Andesite Alloy ×2 → Blackpowder → Press |
-| Six Shooter | Sequenced Assembly | Log → Brass Sheet → Saw → Mechanical Components → Hopper → Iron Sheet ×4 → Brass Sheet → Andesite Alloy ×2 → Press |
-| Arquebus | Sequenced Assembly | Log → Clockwork Components → Log → Saw → Iron Sheet ×6 → Brass Sheet ×2 → Andesite Alloy ×2 → Blackpowder → Press |
-| Clockwork Rifle | Sequenced Assembly | Log → Netherite Ingot → Log → Saw → Clockwork Components → Hopper → Repeater → Iron Sheet ×4 → Brass Sheet ×2 → Andesite Alloy ×2 → Press |
+| Mechanical Components | Sequenced Assembly, 2 loops | Simple Mechanical Components → Brass Sheet → Large Cogwheel → Iron Sheet ×2 → Redstone → Press |
+| Clockwork Components | Sequenced Assembly, 2 loops | Precision Mechanism → Mechanical Components → Brass Sheet ×2 → Golden Sheet → Press |
+| Flintlock | Sequenced Assembly, 2 loops | Flint → Log → Iron Sheet ×2 → Andesite Alloy → Saw → Press |
+| Musket | Sequenced Assembly, 3 loops | Simple Mechanical Components → Log → Iron Sheet ×2 → Andesite Alloy → Saw → Press |
+| Blunderbuss | Sequenced Assembly, 3 loops | Simple Mechanical Components → Andesite Alloy → Log → Copper Sheet → Iron Sheet → Saw → Press |
+| Blackpowder Revolver | Sequenced Assembly, 2 loops | Mechanical Components → Log → Iron Sheet ×2 → Blackpowder → Saw → Press |
+| Six Shooter | Sequenced Assembly, 2 loops | Mechanical Components → Brass Sheet → Log → Iron Sheet ×2 → Saw → Press |
+| Arquebus | Sequenced Assembly, 3 loops | Clockwork Components → Log → Iron Sheet ×2 → Brass Sheet → Saw → Press |
+| Clockwork Rifle | Sequenced Assembly, 3 loops | Clockwork Components → Netherite Scrap → Log → Iron Sheet → Brass Sheet → Saw → Press |
 | Hair Trigger Modifier | Sequenced Assembly | Simple Mechanical Components → Copper Sheet → Iron Sheet ×2 → Saw → Press |
-| Buffer Spring Modifier | Sequenced Assembly | Simple Mechanical Components → Iron Sheet ×6 → Andesite Alloy ×2 → Saw → Press |
+| Buffer Spring Modifier | Sequenced Assembly, 2 loops | Simple Mechanical Components → Iron Sheet ×3 → Andesite Alloy → Saw → Press |
 | Gas Vent Modifier | Sequenced Assembly | Simple Mechanical Components → Hopper → Simple Mechanical Components → Iron Sheet ×2 → Press |
-| Mechanical Accelerator Modifier | Sequenced Assembly | Mechanical Components → Chain ×2 → Copper Sheet ×2 → Shaft ×2 → Press |
-| Mechanical Repeater Modifier | Sequenced Assembly | Clockwork Components → Chain ×2 → Brass Sheet ×2 → Golden Sheet ×2 → Press |
+| Mechanical Accelerator Modifier | Sequenced Assembly, 2 loops | Mechanical Components → Chain → Copper Sheet → Shaft → Press |
+| Mechanical Repeater Modifier | Sequenced Assembly, 2 loops | Clockwork Components → Chain → Brass Sheet → Golden Sheet → Press |
 | Scope Attachment Modifier | Sequenced Assembly | Simple Mechanical Components → Spyglass → Iron Sheet → Press |
 | Bayonet Attachment Modifier | Sequenced Assembly | Iron Sword → Simple Mechanical Components → Andesite Alloy → Press |
 | Suppressor Attachment Modifier | Sequenced Assembly | Clockwork Components → Leather ×2 → Golden Sheet → Iron Sheet ×2 → Press |
 | Gun Oil Modifier | Sequenced Assembly | Simple Mechanical Components → Redstone → Fill 250 mB Honey |
-| Chain Shot Modifier | Sequenced Assembly | Bullet → Chain ×5 → Bullet → Andesite Alloy → Press |
-| Hook Shot Modifier | Sequenced Assembly | Bullet → Iron Sheet ×4 → Chain ×2 → Andesite Alloy ×2 → Press |
+| Chain Shot Modifier | Sequenced Assembly | Bullet → Chain ×4 → Bullet → Press |
+| Hook Shot Modifier | Sequenced Assembly, 2 loops | Bullet → Iron Sheet ×2 → Chain → Andesite Alloy → Press |
 | Blackpowder Charge Modifier | Compacting | 8× Blackpowder, 2× String |
 | Scattershot Modifier | Compacting | 4× Bullet, 4× Blackpowder, 2× String |
 | Breaching Shell Modifier | Compacting | 2× Copper Sheet, 2× Iron Sheet, 4× Blackpowder, 3× Flint |

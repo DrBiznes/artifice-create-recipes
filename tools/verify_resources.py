@@ -30,6 +30,7 @@ def main():
         assert item.startswith(MOD + ':incomplete_') and item not in workpieces
         workpieces.add(item)
         assert recipe['loops'] >= 1 and recipe['sequence'][0]['type'] == 'create:deploying'
+        assert len(recipe['sequence']) <= 6, 'Too many steps for the recipe viewer: ' + file.stem
         signature = json.dumps([recipe['ingredient'], recipe['sequence'][0]['ingredients'][1]], sort_keys=True)
         assert signature not in signatures, 'Conflicting first operation: ' + file.stem
         signatures.add(signature)

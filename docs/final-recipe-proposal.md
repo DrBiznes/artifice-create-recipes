@@ -2,6 +2,8 @@
 
 Status: implemented. Resource checks and four server GameTests passed, including all 23 native Create assembly progressions. Graphical client and survival factory playtesting remain outstanding. This is the accepted recipe specification and supersedes the earlier alternatives in `recipe-design.md`.
 
+> **Revised for 0.1.0:** Create's recipe viewer fits only six sequence steps. Long sequences were rebuilt as short loops, and one-off parts became starting items. Guns now use 2 logs (compact) or 3 logs (long), and the clockwork rifle uses 3 netherite scrap instead of an ingot. Some minor deploys were dropped. The README recipe table and `tools/generate_recipes.py` are authoritative where they differ from the gun, component, and modifier sequences below.
+
 ## Rules
 
 - Replace all 44 existing crafting-table recipes for blackpowder, bullets, components, guns, and modifiers. Preserve the two hat recipes. The replacement set also has 44 recipes: 23 sequenced assemblies, 11 compacting recipes, and 10 mixing recipes.

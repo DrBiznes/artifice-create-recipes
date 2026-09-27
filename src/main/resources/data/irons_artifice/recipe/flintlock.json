@@ -1,12 +1,12 @@
 {
   "type": "create:sequenced_assembly",
   "ingredient": {
-    "tag": "minecraft:logs"
+    "item": "minecraft:flint"
   },
   "transitional_item": {
     "id": "artifice_create_recipes:incomplete_flintlock"
   },
-  "loops": 1,
+  "loops": 2,
   "sequence": [
     {
       "type": "create:deploying",
@@ -15,7 +15,55 @@
           "item": "artifice_create_recipes:incomplete_flintlock"
         },
         {
-          "item": "minecraft:flint"
+          "tag": "minecraft:logs"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_flintlock"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_flintlock"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_flintlock"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_flintlock"
+        },
+        {
+          "tag": "c:plates/iron"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_flintlock"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_flintlock"
+        },
+        {
+          "item": "create:andesite_alloy"
         }
       ],
       "results": [
@@ -37,118 +85,6 @@
         }
       ],
       "processing_time": 50
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_flintlock"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_flintlock"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_flintlock"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_flintlock"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_flintlock"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_flintlock"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_flintlock"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_flintlock"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_flintlock"
-        },
-        {
-          "item": "create:andesite_alloy"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_flintlock"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_flintlock"
-        },
-        {
-          "item": "create:andesite_alloy"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_flintlock"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_flintlock"
-        },
-        {
-          "item": "irons_artifice:blackpowder"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_flintlock"
-        }
-      ]
     },
     {
       "type": "create:pressing",

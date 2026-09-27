@@ -6,7 +6,7 @@
   "transitional_item": {
     "id": "artifice_create_recipes:incomplete_mechanical_repeater_modifier"
   },
-  "loops": 1,
+  "loops": 2,
   "sequence": [
     {
       "type": "create:deploying",
@@ -31,55 +31,7 @@
           "item": "artifice_create_recipes:incomplete_mechanical_repeater_modifier"
         },
         {
-          "item": "minecraft:chain"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_mechanical_repeater_modifier"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_mechanical_repeater_modifier"
-        },
-        {
           "tag": "c:plates/brass"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_mechanical_repeater_modifier"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_mechanical_repeater_modifier"
-        },
-        {
-          "tag": "c:plates/brass"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_mechanical_repeater_modifier"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_mechanical_repeater_modifier"
-        },
-        {
-          "tag": "c:plates/gold"
         }
       ],
       "results": [

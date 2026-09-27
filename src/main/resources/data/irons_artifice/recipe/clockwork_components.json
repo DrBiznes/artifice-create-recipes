@@ -1,29 +1,13 @@
 {
   "type": "create:sequenced_assembly",
   "ingredient": {
-    "item": "irons_artifice:mechanical_components"
+    "item": "create:precision_mechanism"
   },
   "transitional_item": {
     "id": "artifice_create_recipes:incomplete_clockwork_components"
   },
-  "loops": 1,
+  "loops": 2,
   "sequence": [
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_clockwork_components"
-        },
-        {
-          "item": "create:precision_mechanism"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_clockwork_components"
-        }
-      ]
-    },
     {
       "type": "create:deploying",
       "ingredients": [
@@ -64,54 +48,6 @@
         },
         {
           "tag": "c:plates/brass"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_clockwork_components"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_clockwork_components"
-        },
-        {
-          "tag": "c:plates/brass"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_clockwork_components"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_clockwork_components"
-        },
-        {
-          "tag": "c:plates/brass"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_clockwork_components"
-        }
-      ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_clockwork_components"
-        },
-        {
-          "tag": "c:plates/gold"
         }
       ],
       "results": [
