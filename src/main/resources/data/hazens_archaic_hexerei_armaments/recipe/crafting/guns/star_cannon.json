@@ -1,0 +1,128 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "hazens_archaic_hexerei_armaments"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "hazentouvelib"
+    }
+  ],
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "irons_artifice:clockwork_rifle"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_star_cannon"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_star_cannon"
+        },
+        {
+          "item": "hazens_archaic_hexerei_armaments:warhog_cog"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_star_cannon"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_star_cannon"
+        },
+        {
+          "item": "hazens_archaic_hexerei_armaments:warhog_cog"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_star_cannon"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_star_cannon"
+        },
+        {
+          "item": "irons_spellbooks:mithril_scrap"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_star_cannon"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_star_cannon"
+        },
+        {
+          "item": "irons_spellbooks:mithril_scrap"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_star_cannon"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_star_cannon"
+        },
+        {
+          "item": "minecraft:nether_star"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_star_cannon"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_star_cannon"
+        },
+        {
+          "item": "irons_artifice:blackpowder"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_star_cannon"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "hazens_archaic_hexerei_armaments:star_cannon",
+      "count": 1
+    }
+  ]
+}

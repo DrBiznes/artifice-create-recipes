@@ -23,5 +23,10 @@
   "item.artifice_create_recipes.incomplete_suppressor_attachment_modifier": "Incomplete Suppressor Attachment Modifier",
   "item.artifice_create_recipes.incomplete_gun_oil_modifier": "Incomplete Gun Oil Modifier",
   "item.artifice_create_recipes.incomplete_chain_shot_modifier": "Incomplete Chain Shot Modifier",
-  "item.artifice_create_recipes.incomplete_hook_shot_modifier": "Incomplete Hook Shot Modifier"
+  "item.artifice_create_recipes.incomplete_hook_shot_modifier": "Incomplete Hook Shot Modifier",
+  "item.artifice_create_recipes.incomplete_warhog_cog": "Incomplete Warhog Cog",
+  "item.artifice_create_recipes.incomplete_royaltys_barrel": "Incomplete Royalty's Barrel",
+  "item.artifice_create_recipes.incomplete_star_cannon": "Incomplete Star Cannon",
+  "item.artifice_create_recipes.incomplete_super_star_shooter": "Incomplete Super Star Shooter",
+  "item.artifice_create_recipes.incomplete_tactical_crossgun": "Incomplete Tactical Crossgun"
 }

@@ -15,6 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.gametest.GameTestHolder;
 
@@ -27,13 +28,15 @@ import net.neoforged.neoforge.gametest.GameTestHolder;
 public final class FactoryTests {
     public static final String MOD = "artifice_create_recipes_tests";
     private static final String ADDON = "artifice_create_recipes";
+    private static final String HEXEREI = "hazens_archaic_hexerei_armaments";
 
     @GameTestGenerator
     public static Collection<TestFunction> tests() {
         return List.of(test("replacements_and_hats", FactoryTests::replacements),
                 test("every_sequence_completes", FactoryTests::sequences),
                 test("agreed_material_costs", FactoryTests::costs),
-                test("workpieces_and_unlocks", FactoryTests::workpieces));
+                test("workpieces_and_unlocks", FactoryTests::workpieces),
+                test("optional_hexerei_support", FactoryTests::hexerei));
     }
 
     private static TestFunction test(String name, Consumer<GameTestHelper> body) {
@@ -42,6 +45,14 @@ public final class FactoryTests {
 
     private static ResourceLocation id(String name) {
         return ResourceLocation.parse(name.contains(":") ? name : "irons_artifice:" + name);
+    }
+
+    private static boolean hexereiLoaded() {
+        return ModList.get().isLoaded(HEXEREI);
+    }
+
+    private static boolean isAddonNamespace(ResourceLocation id) {
+        return id.getNamespace().equals("irons_artifice") || id.getNamespace().equals(HEXEREI);
     }
 
     private static Recipe<?> recipe(GameTestHelper h, String name) {
@@ -73,7 +84,7 @@ public final class FactoryTests {
         var level = h.getLevel();
         int completed = 0;
         for (var holder : level.getRecipeManager().getRecipes()) {
-            if (!holder.id().getNamespace().equals("irons_artifice") || !(holder.value() instanceof SequencedAssemblyRecipe assembly)) continue;
+            if (!isAddonNamespace(holder.id()) || !(holder.value() instanceof SequencedAssemblyRecipe assembly)) continue;
             var initial = assembly.getIngredient().getItems();
             h.assertTrue(initial.length > 0, "Starter tag resolves: " + holder.id());
             ItemStack current = initial[0].copyWithCount(1);
@@ -108,7 +119,8 @@ public final class FactoryTests {
             h.assertTrue(!(current.getItem() instanceof IncompleteItem), "Workpiece becomes real product");
             completed++;
         }
-        h.assertTrue(completed == 23, "All 23 sequences completed");
+        int expected = 23 + (hexereiLoaded() ? WorkpieceNames.HEXEREI.size() : 0);
+        h.assertTrue(completed == expected, "All " + expected + " sequences completed, got " + completed);
         h.succeed();
     }
 
@@ -160,6 +172,10 @@ public final class FactoryTests {
             var item = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ADDON, name));
             h.assertTrue(item instanceof IncompleteItem, "Registered inert workpiece: " + name);
         }
+        for (String name : WorkpieceNames.HEXEREI) {
+            boolean registered = BuiltInRegistries.ITEM.containsKey(ResourceLocation.fromNamespaceAndPath(ADDON, name));
+            h.assertTrue(registered == hexereiLoaded(), "Hexerei workpiece registered only with Hexerei: " + name);
+        }
         for (var r : h.getLevel().getRecipeManager().getRecipes()) {
             if (r.id().getNamespace().equals("irons_artifice") && !(r.value() instanceof CraftingRecipe)) {
                 var oldUnlock = id("irons_artifice:recipes/misc/" + r.id().getPath());
@@ -168,6 +184,38 @@ public final class FactoryTests {
         }
         h.assertTrue(h.getLevel().getServer().getAdvancements().get(id("irons_artifice:recipes/misc/cowboy_hat")) != null,
                 "Hat recipe advancement retained");
+        h.succeed();
+    }
+
+    /** Without Hexerei every conditional override must stay out of the recipe manager. */
+    private static void hexerei(GameTestHelper h) {
+        var recipes = h.getLevel().getRecipeManager().getRecipes();
+        if (!hexereiLoaded()) {
+            for (var holder : recipes) {
+                h.assertTrue(!holder.id().getNamespace().equals(HEXEREI), "Hexerei recipe leaked without Hexerei: " + holder.id());
+            }
+            h.succeed();
+            return;
+        }
+        for (var holder : recipes) {
+            if (holder.id().getNamespace().equals(HEXEREI) && holder.value() instanceof CraftingRecipe) {
+                h.assertTrue(!holder.id().getPath().startsWith("crafting/guns/") && !holder.id().getPath().equals("crafting/materials/warhog_cog"),
+                        "No crafting-table bypass for Hexerei guns: " + holder.id());
+            }
+        }
+        String cog = HEXEREI + ":crafting/materials/warhog_cog";
+        h.assertTrue(recipe(h, cog).getResultItem(h.getLevel().registryAccess()).getCount() == 2, "Cog recipe yields 2");
+        cost(h, cog, "irons_artifice:clockwork_components", 2);
+        cost(h, cog, "hazentouvelib:steel_block", 2);
+        cost(h, cog, "minecraft:netherite_ingot", 1);
+        cost(h, HEXEREI + ":crafting/guns/star_cannon", HEXEREI + ":warhog_cog", 2);
+        cost(h, HEXEREI + ":crafting/guns/star_cannon", "irons_artifice:clockwork_rifle", 1);
+        cost(h, HEXEREI + ":crafting/guns/super_star_shooter", HEXEREI + ":warhog_cog", 2);
+        cost(h, HEXEREI + ":crafting/guns/super_star_shooter", HEXEREI + ":star_cannon", 1);
+        cost(h, HEXEREI + ":crafting/guns/tactical_crossgun", HEXEREI + ":warhog_cog", 1);
+        cost(h, HEXEREI + ":crafting/guns/tactical_crossgun", "irons_spellbooks:mithril_scrap", 2);
+        cost(h, HEXEREI + ":crafting/guns/royaltys_barrel", "irons_artifice:blunderbuss", 1);
+        cost(h, HEXEREI + ":crafting/guns/royaltys_barrel", "minecraft:quartz", 2);
         h.succeed();
     }
 }

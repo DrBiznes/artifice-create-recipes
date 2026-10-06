@@ -9,18 +9,22 @@ Requires a **JDK 21**. Open this directory as a Gradle project in IntelliJ IDEA 
 .\gradlew.bat runGameTestServer
 ```
 
-On Linux/macOS use `bash ./gradlew`. `build` produces `build/libs/artifice_create_recipes-<version>.jar`. `runGameTestServer` loads a development-only test mod in `run-gametest`. It checks the live recipe manager, tag resolution, removal of the original crafting recipes, all 23 Create assembly progressions, starter selection, material budgets, workpiece registration, and advancement suppression. These tests are not packaged in the release jar.
+On Linux/macOS use `bash ./gradlew`. `build` produces `build/libs/artifice_create_recipes-<version>.jar`. `runGameTestServer` loads a development-only test mod in `run-gametest`. It checks the live recipe manager, tag resolution, removal of the original crafting recipes, all 23 Create assembly progressions (plus the 5 optional Hexerei ones when that mod is installed; without it the tests assert none of its recipes or workpieces leak), starter selection, material budgets, workpiece registration, and advancement suppression. These tests are not packaged in the release jar.
 
 ## Regenerating resources
 
 ```powershell
-python tools/generate_recipes.py    # recipes, models, lang, WorkpieceNames.java
+python tools/generate_recipes.py    # recipes (incl. optional Hexerei overrides), models, lang, WorkpieceNames.java
 python tools/generate_textures.py   # 16x16 workpiece sprites + docs/workpiece-textures.png
 python tools/generate_branding.py   # docs/banner.png, docs/icon.png, packaged mod logo
 python tools/verify_resources.py
 ```
 
 Texture and branding generation require Pillow 10.1+. The rest uses only the standard library. All output is deterministic and checked in. Edit the generators rather than the generated JSON or PNGs. The branding script downloads the Rye font (OFL) into the ignored `.research/` directory.
+
+## Optional Hexerei support
+
+The five Hexerei recipes are generated into `data/hazens_archaic_hexerei_armaments/recipe/crafting/...` with the same IDs as Hexerei's own, so they replace them. Each carries `neoforge:mod_loaded` conditions for Hexerei, Iron's Spells 'n Spellbooks, and HazentouveLib, and `neoforge.mods.toml` declares Hexerei as an optional `AFTER` dependency so this mod's data wins. The `incomplete_*` workpieces for them are listed in `WorkpieceNames.HEXEREI` and registered only when Hexerei is loaded. The dev environment does not include Hexerei, so `runGameTestServer` exercises the absent case; to check the present case, drop the Hexerei, Spellbooks, and HazentouveLib jars (plus Curios, Caelus, and Player Animator, which Spellbooks needs) into `run-gametest/mods`. Hexerei 1.0.3 needs HazentouveLib 1.0.11 or later; earlier builds lack its steel items and block-entity base class. Verified with Hexerei 1.0.3, HazentouveLib 1.0.11, Iron's Spells 'n Spellbooks 3.16.3, Curios 9.5.1, Caelus 7.0.1, and Player Animator 2.0.4.
 
 ## Pinned versions
 

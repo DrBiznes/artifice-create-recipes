@@ -5,7 +5,7 @@ with nearest-neighbor sampling for inspection; only 16x16 PNGs ship in the mod.
 """
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
-from generate_recipes import ROOT, MOD, ITEMS
+from generate_recipes import ROOT, MOD, ITEMS, HEX_ITEMS
 
 OUT = ROOT / 'src/main/resources/assets' / MOD / 'textures/item'
 PALETTE = {
@@ -15,6 +15,8 @@ PALETTE = {
     'copper_dark': '#7b3f2c', 'copper': '#c5753b', 'copper_light': '#f1ac62',
     'brass_dark': '#796039', 'brass': '#c6a24d', 'brass_light': '#f4d482',
     'red': '#a7483e', 'blue': '#7395a5', 'oil': '#e3a83e',
+    'steel': '#9aa5b1', 'steel_light': '#d3dbe3', 'nether': '#4b3a4a', 'star': '#f6e27a',
+    'ember': '#e0702a', 'quartz': '#ece6dc', 'mithril': '#7fd0d8',
 }
 
 
@@ -94,6 +96,62 @@ def gun(kind):
             s.gear(8, 6, 'brass', large=True)
             for p in [(7, 5), (9, 5), (7, 7), (9, 7)]:
                 s.box((*p, *p), 'shadow')
+    return s
+
+
+def star(s, x, y, tone='star'):
+    """A five-pixel plus-shaped star glint centred on (x, y)."""
+    s.line([(x-1, y), (x+1, y)], tone)
+    s.line([(x, y-1), (x, y+1)], tone)
+    s.box((x, y, x, y), 'glint')
+
+
+def hexerei_gun(kind):
+    s = gun('musket' if kind == 'tactical_crossgun' else 'blunderbuss')
+    if kind == 'royaltys_barrel':
+        # Flared barrel with quartz studs and a glowing ember core.
+        s.box((11, 2, 13, 4), 'ember')
+        s.box((12, 3, 12, 3), 'glint')
+        s.box((7, 8, 8, 8), 'quartz')
+        s.box((4, 10, 4, 10), 'quartz')
+    elif kind == 'star_cannon':
+        s.box((11, 1, 13, 4), 'shadow')
+        star(s, 12, 3)
+        s.box((8, 8, 9, 9), 'mithril')
+        s.box((2, 12, 2, 12), 'brass')
+    elif kind == 'super_star_shooter':
+        s.box((10, 1, 14, 5), 'nether')
+        star(s, 12, 3)
+        star(s, 8, 9, 'mithril')
+        s.line([(1, 14), (3, 14)], 'brass_light')
+    elif kind == 'tactical_crossgun':
+        # Unstrung crossbar and steel limbs over a bare stock.
+        s.line([(8, 2), (12, 6)], 'steel', 1)
+        s.line([(12, 2), (8, 6)], 'steel', 1)
+        s.box((10, 4, 10, 4), 'nether')
+        s.box((5, 8, 6, 8), 'mithril')
+    return s
+
+
+def cog():
+    s = Sprite()
+    # A heavy steel cog with a dark netherite hub and a ring of teeth.
+    s.box((6, 1, 9, 14), 'outline')
+    s.box((1, 6, 14, 9), 'outline')
+    s.box((2, 2, 13, 13), 'outline')
+    s.box((3, 3, 12, 12), 'steel')
+    s.line([(3, 3), (12, 3)], 'steel_light')
+    s.line([(3, 3), (3, 12)], 'steel_light')
+    s.line([(4, 12), (12, 12)], 'shadow')
+    s.line([(12, 4), (12, 12)], 'shadow')
+    s.box((5, 5, 10, 10), 'outline')
+    s.box((6, 6, 9, 9), 'nether')
+    s.box((7, 7, 8, 8), 'red')
+    s.box((6, 6, 6, 6), 'mithril')
+    for x, y in [(2, 2), (13, 2), (2, 13), (13, 13)]:
+        s.box((x, y, x, y), (0, 0, 0, 0))
+    for x, y in [(3, 3), (12, 3), (3, 12), (12, 12)]:
+        s.box((x, y, x, y), 'outline')
     return s
 
 
@@ -224,9 +282,13 @@ def attachment(kind):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     previews = []
-    for name in ITEMS:
+    for name in [*ITEMS, *HEX_ITEMS]:
         kind = name.removeprefix('incomplete_')
-        if kind.endswith('bullet_batch'):
+        if kind == 'warhog_cog':
+            sprite = cog()
+        elif name in HEX_ITEMS:
+            sprite = hexerei_gun(kind)
+        elif kind.endswith('bullet_batch'):
             sprite = ammo(kind.startswith('copper'))
         elif kind.endswith('components'):
             sprite = mechanism(kind)

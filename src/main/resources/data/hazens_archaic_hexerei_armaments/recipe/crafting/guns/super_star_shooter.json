@@ -1,0 +1,128 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "hazens_archaic_hexerei_armaments"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "hazentouvelib"
+    }
+  ],
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "hazens_archaic_hexerei_armaments:star_cannon"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_super_star_shooter"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_super_star_shooter"
+        },
+        {
+          "item": "hazens_archaic_hexerei_armaments:warhog_cog"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_super_star_shooter"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_super_star_shooter"
+        },
+        {
+          "item": "hazens_archaic_hexerei_armaments:warhog_cog"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_super_star_shooter"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_super_star_shooter"
+        },
+        {
+          "item": "irons_artifice:clockwork_components"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_super_star_shooter"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_super_star_shooter"
+        },
+        {
+          "item": "irons_spellbooks:mithril_ingot"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_super_star_shooter"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_super_star_shooter"
+        },
+        {
+          "tag": "c:ingots/netherite"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_super_star_shooter"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_super_star_shooter"
+        },
+        {
+          "item": "minecraft:netherite_scrap"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_super_star_shooter"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "hazens_archaic_hexerei_armaments:super_star_shooter",
+      "count": 1
+    }
+  ]
+}

@@ -40,3 +40,11 @@ type="required"
 versionRange="${irons_artifice_version_range}"
 ordering="AFTER"
 side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="hazens_archaic_hexerei_armaments"
+type="optional"
+reason="Adds factory recipes for its guns when installed."
+versionRange="${hexerei_version_range}"
+ordering="AFTER"
+side="BOTH"

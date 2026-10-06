@@ -13,22 +13,34 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 RES = ROOT / 'src/main/resources'
 MOD = 'artifice_create_recipes'
+HEX = 'hazens_archaic_hexerei_armaments'
+HEX_RECIPES = ['crafting/materials/warhog_cog', 'crafting/guns/royaltys_barrel', 'crafting/guns/star_cannon',
+               'crafting/guns/super_star_shooter', 'crafting/guns/tactical_crossgun']
+HEX_MODS = {HEX, 'irons_spellbooks', 'hazentouvelib'}
 
 
 def main():
     original = set(re.findall(r'^\| `([^`]+)` \|', (ROOT / 'docs/existing-recipes.md').read_text(encoding='utf-8-sig'), re.M))
     files = list((RES / 'data/irons_artifice/recipe').glob('*.json'))
     assert {f.stem for f in files} == original - {'cowboy_hat', 'tricorne'}, 'Missing/extra upstream overrides'
-    types, workpieces, signatures = Counter(), set(), set()
-    for file in files:
+    hex_files = [RES / 'data' / HEX / 'recipe' / (r + '.json') for r in HEX_RECIPES]
+    assert {f.relative_to(RES / 'data' / HEX / 'recipe').as_posix()[:-5] for f in (RES / 'data' / HEX / 'recipe').rglob('*.json')} == set(HEX_RECIPES)
+    types, workpieces, signatures, hex_workpieces = Counter(), set(), set(), set()
+    for file in files + hex_files:
         recipe = json.loads(file.read_text())
-        types[recipe['type']] += 1
+        is_hex = file in hex_files
+        if is_hex:
+            conditions = recipe.pop('neoforge:conditions')
+            assert {c['modid'] for c in conditions if c['type'] == 'neoforge:mod_loaded'} == HEX_MODS, file.stem
+            assert recipe['results'][0]['id'] == HEX + ':' + file.stem
+        else:
+            types[recipe['type']] += 1
         assert len(recipe['results']) == 1 and recipe['results'][0].get('chance', 1) == 1
         if recipe['type'] != 'create:sequenced_assembly':
             continue
         item = recipe['transitional_item']['id']
-        assert item.startswith(MOD + ':incomplete_') and item not in workpieces
-        workpieces.add(item)
+        assert item.startswith(MOD + ':incomplete_') and item not in workpieces | hex_workpieces
+        (hex_workpieces if is_hex else workpieces).add(item)
         assert recipe['loops'] >= 1 and recipe['sequence'][0]['type'] == 'create:deploying'
         assert len(recipe['sequence']) <= 6, 'Too many steps for the recipe viewer: ' + file.stem
         signature = json.dumps([recipe['ingredient'], recipe['sequence'][0]['ingredients'][1]], sort_keys=True)
@@ -39,7 +51,8 @@ def main():
             assert step['results'] == [{'id': item}]
             assert step['type'] in {'create:deploying', 'create:pressing', 'create:cutting', 'create:filling'}
     assert types == {'create:sequenced_assembly': 23, 'create:compacting': 11, 'create:mixing': 10}, types
-    expected_names = {i.split(':')[1] for i in workpieces}
+    assert len(hex_workpieces) == 5 and len(signatures) == 28
+    expected_names = {i.split(':')[1] for i in workpieces | hex_workpieces}
     assets = RES / 'assets' / MOD
     assert {p.stem for p in (assets / 'textures/item').glob('*.png')} == expected_names
     assert {p.stem for p in (assets / 'models/item').glob('*.json')} == expected_names
@@ -54,12 +67,13 @@ def main():
         assert lang['item.' + MOD + '.' + item]
         model = json.loads((assets / 'models/item' / (item + '.json')).read_text())
         assert model['textures']['layer0'] == MOD + ':item/' + item
-    assert len(hashes) == 23, 'Every workpiece needs a distinct texture'
+    assert len(hashes) == 28, 'Every workpiece needs a distinct texture'
     overrides = list((RES / 'data/irons_artifice/advancement/recipes/misc').glob('*.json'))
     assert {f.stem for f in overrides} == {f.stem for f in files}
-    for f in overrides:
+    hex_overrides = [RES / 'data' / HEX / 'advancement/recipes/combat' / (r + '.json') for r in HEX_RECIPES]
+    for f in overrides + hex_overrides:
         assert json.loads(f.read_text()) == {'neoforge:conditions': [{'type': 'neoforge:false'}]}
-    print('PASS: all 44 overrides, 23 unique 16x16 RGBA sprites/models/translations, unique assembly starters, and 44 stale unlock suppressions.')
+    print('PASS: all 44 overrides + 5 optional Hexerei overrides, 28 unique 16x16 RGBA sprites/models/translations, unique assembly starters, and 49 stale unlock suppressions.')
 
 
 if __name__ == '__main__':

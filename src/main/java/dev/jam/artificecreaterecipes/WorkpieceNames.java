@@ -29,5 +29,13 @@ public final class WorkpieceNames {
             "incomplete_chain_shot_modifier",
             "incomplete_hook_shot_modifier"
     );
+    /** Registered only when Hazen's Archaic Hexerei Armaments is installed. */
+    public static final List<String> HEXEREI = List.of(
+            "incomplete_warhog_cog",
+            "incomplete_royaltys_barrel",
+            "incomplete_star_cannon",
+            "incomplete_super_star_shooter",
+            "incomplete_tactical_crossgun"
+    );
     private WorkpieceNames() {}
 }

@@ -1,0 +1,109 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "hazens_archaic_hexerei_armaments"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "hazentouvelib"
+    }
+  ],
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "c:ingots/netherite"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_warhog_cog"
+  },
+  "loops": 2,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_warhog_cog"
+        },
+        {
+          "item": "irons_artifice:clockwork_components"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_warhog_cog"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_warhog_cog"
+        },
+        {
+          "item": "hazentouvelib:steel_block"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_warhog_cog"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_warhog_cog"
+        },
+        {
+          "item": "minecraft:netherite_scrap"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_warhog_cog"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_warhog_cog"
+        },
+        {
+          "item": "minecraft:redstone"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_warhog_cog"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_warhog_cog"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_warhog_cog"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "hazens_archaic_hexerei_armaments:warhog_cog",
+      "count": 2
+    }
+  ]
+}

@@ -11,6 +11,10 @@ ROOT = Path(__file__).resolve().parents[1]
 RES = ROOT / 'src/main/resources'
 MOD = 'artifice_create_recipes'
 IA = 'irons_artifice:'
+# Optional Hazen's Archaic Hexerei Armaments (1.21.1) support. Its recipes are
+# overridden by id and only load when it and the mods its recipes use are present.
+HEX = 'hazens_archaic_hexerei_armaments'
+HEX_CONDITIONS = [{'type': 'neoforge:mod_loaded', 'modid': m} for m in (HEX, 'irons_spellbooks', 'hazentouvelib')]
 
 ALIASES = {
     'iron': '#c:plates/iron', 'copper': '#c:plates/copper',
@@ -24,6 +28,12 @@ ALIASES = {
     'mechanical': IA + 'mechanical_components',
     'clockwork': IA + 'clockwork_components',
     'powder': IA + 'blackpowder', 'bullet': IA + 'bullet',
+    'blunderbuss_gun': IA + 'blunderbuss', 'rifle': IA + 'clockwork_rifle',
+    'overcharged': IA + 'overcharged_powder_modifier',
+    'steel_block': 'hazentouvelib:steel_block', 'cog': 'create:cogwheel',
+    'warhog_cog': HEX + ':warhog_cog', 'star_cannon_gun': HEX + ':star_cannon',
+    'mithril_ingot': 'irons_spellbooks:mithril_ingot', 'mithril_scrap': 'irons_spellbooks:mithril_scrap',
+    'cinder_essence': 'irons_spellbooks:cinder_essence',
 }
 
 
@@ -46,13 +56,17 @@ C = [('cutting', None)]
 HONEY = [('filling', {'type': 'neoforge:tag', 'tag': 'c:honey', 'amount': 250})]
 RECIPES = {}
 ITEMS = {}
+# Hexerei overrides, keyed by recipe path under data/<HEX>/recipe.
+HEX_RECIPES = {}
+HEX_ITEMS = {}
 
 
-def assembly(recipe_id, start, steps, loops=1, output=None, count=1, incomplete=None):
+def assembly(recipe_id, start, steps, loops=1, output=None, count=1, incomplete=None, addon=None):
     assert len(steps) <= 6, recipe_id + ' exceeds the six steps Create can display'
-    item = incomplete or 'incomplete_' + recipe_id
+    name = recipe_id.rsplit('/', 1)[-1]
+    item = incomplete or 'incomplete_' + name
     transitional = MOD + ':' + item
-    ITEMS[item] = {'recipe': recipe_id, 'output': output or recipe_id}
+    (HEX_ITEMS if addon else ITEMS)[item] = {'recipe': recipe_id, 'output': output or name}
     sequence = []
     for kind, value in steps:
         step = {'type': 'create:' + kind, 'ingredients': [{'item': transitional}],
@@ -64,11 +78,16 @@ def assembly(recipe_id, start, steps, loops=1, output=None, count=1, incomplete=
         elif kind == 'cutting':
             step['processing_time'] = 50
         sequence.append(step)
-    RECIPES[recipe_id] = {
+    recipe = {
         'type': 'create:sequenced_assembly', 'ingredient': ingredient(start),
         'transitional_item': {'id': transitional}, 'loops': loops,
-        'sequence': sequence, 'results': [{'id': IA + (output or recipe_id), 'count': count}],
+        'sequence': sequence,
+        'results': [{'id': (addon + ':' + name) if addon else IA + (output or recipe_id), 'count': count}],
     }
+    if addon:
+        HEX_RECIPES[recipe_id] = {'neoforge:conditions': HEX_CONDITIONS, **recipe}
+    else:
+        RECIPES[recipe_id] = recipe
 
 
 def basin(recipe_id, kind, inputs, output=None, count=1, heat=None):
@@ -119,6 +138,19 @@ ASSEMBLY_MODIFIERS = {
 for name, (start, steps, *loops) in ASSEMBLY_MODIFIERS.items():
     assembly(name + '_modifier', start, steps, *loops)
 
+# Hexerei's guns upgrade a finished Artifice gun. Six steps is the viewer limit,
+# so there is no closing press; every sequence starts from a different item.
+assembly('crafting/materials/warhog_cog', 'netherite',
+         D('clockwork') + D('steel_block') + D('netherite_scrap') + D('redstone') + P, 2, count=2, addon=HEX)
+assembly('crafting/guns/royaltys_barrel', 'blunderbuss_gun',
+         D('clockwork') + D('mechanical') + D('cinder_essence') + D('netherite_scrap') + D('quartz', 2), addon=HEX)
+assembly('crafting/guns/star_cannon', 'rifle',
+         D('warhog_cog', 2) + D('mithril_scrap', 2) + D('nether_star') + D('powder'), addon=HEX)
+assembly('crafting/guns/super_star_shooter', 'star_cannon_gun',
+         D('warhog_cog', 2) + D('clockwork') + D('mithril_ingot') + D('netherite') + D('netherite_scrap'), addon=HEX)
+assembly('crafting/guns/tactical_crossgun', 'warhog_cog',
+         D('mithril_ingot') + D('mithril_scrap', 2) + D('cinder_essence') + D('steel_block') + D('overcharged'), addon=HEX)
+
 COMPACTING = {
     'blackpowder_charge': [('powder', 8), ('string', 2)],
     'scattershot': [('bullet', 4), ('powder', 4), ('string', 2)],
@@ -149,22 +181,29 @@ for name, inputs in MIXING.items():
 
 
 def main():
-    assert len(RECIPES) == 44 and len(ITEMS) == 23
+    assert len(RECIPES) == 44 and len(ITEMS) == 23 and len(HEX_RECIPES) == 5 and len(HEX_ITEMS) == 5
     for name, recipe in RECIPES.items():
         write_json(RES / 'data/irons_artifice/recipe' / (name + '.json'), recipe)
         # These are processing recipes, not recipe-book crafting unlocks. Override
         # only their old recipe-unlock advancements, leaving gameplay goals alone.
         write_json(RES / 'data/irons_artifice/advancement/recipes/misc' / (name + '.json'),
                    {'neoforge:conditions': [{'type': 'neoforge:false'}]})
+    for path in HEX_RECIPES:
+        write_json(RES / 'data' / HEX / 'recipe' / (path + '.json'), HEX_RECIPES[path])
+        # Same suppression as above; the old shaped recipe's unlock is stale.
+        write_json(RES / 'data' / HEX / 'advancement/recipes/combat' / (path + '.json'),
+                   {'neoforge:conditions': [{'type': 'neoforge:false'}]})
     lang = {'itemGroup.' + MOD: 'Artifice: Factory Workpieces',
             'tooltip.' + MOD + '.incomplete': 'Unfinished workpiece — continue its assembly line.'}
-    for name in ITEMS:
-        lang['item.' + MOD + '.' + name] = name.replace('_', ' ').title()
+    for name in [*ITEMS, *HEX_ITEMS]:
+        lang['item.' + MOD + '.' + name] = name.replace('_', ' ').title().replace('Royaltys', "Royalty's")
         write_json(RES / 'assets' / MOD / 'models/item' / (name + '.json'),
                    {'parent': 'minecraft:item/generated', 'textures': {'layer0': MOD + ':item/' + name}})
     write_json(RES / 'assets' / MOD / 'lang/en_us.json', lang)
     # Shared registry manifest keeps assets and runtime registration in sync.
-    lines = '\n'.join('            "' + name + '",' for name in ITEMS).rstrip(',')
+    def names(items):
+        return '\n'.join('            "' + name + '",' for name in items).rstrip(',')
+
     java = f'''// Generated by tools/generate_recipes.py; do not edit by hand.
 package dev.jam.artificecreaterecipes;
 
@@ -172,13 +211,17 @@ import java.util.List;
 
 public final class WorkpieceNames {{
     public static final List<String> ALL = List.of(
-{lines}
+{names(ITEMS)}
+    );
+    /** Registered only when Hazen's Archaic Hexerei Armaments is installed. */
+    public static final List<String> HEXEREI = List.of(
+{names(HEX_ITEMS)}
     );
     private WorkpieceNames() {{}}
 }}
 '''
     (ROOT / 'src/main/java/dev/jam/artificecreaterecipes/WorkpieceNames.java').write_text(java, encoding='utf-8')
-    print(f'Generated {len(RECIPES)} replacements and {len(ITEMS)} workpieces.')
+    print(f'Generated {len(RECIPES)} replacements and {len(ITEMS)} workpieces, plus {len(HEX_RECIPES)} optional Hexerei replacements.')
 
 
 if __name__ == '__main__':

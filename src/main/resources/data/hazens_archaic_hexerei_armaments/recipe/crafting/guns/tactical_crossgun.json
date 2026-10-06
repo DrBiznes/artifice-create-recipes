@@ -1,0 +1,128 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "hazens_archaic_hexerei_armaments"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "hazentouvelib"
+    }
+  ],
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "hazens_archaic_hexerei_armaments:warhog_cog"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_tactical_crossgun"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_tactical_crossgun"
+        },
+        {
+          "item": "irons_spellbooks:mithril_ingot"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_tactical_crossgun"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_tactical_crossgun"
+        },
+        {
+          "item": "irons_spellbooks:mithril_scrap"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_tactical_crossgun"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_tactical_crossgun"
+        },
+        {
+          "item": "irons_spellbooks:mithril_scrap"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_tactical_crossgun"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_tactical_crossgun"
+        },
+        {
+          "item": "irons_spellbooks:cinder_essence"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_tactical_crossgun"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_tactical_crossgun"
+        },
+        {
+          "item": "hazentouvelib:steel_block"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_tactical_crossgun"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_tactical_crossgun"
+        },
+        {
+          "item": "irons_artifice:overcharged_powder_modifier"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_tactical_crossgun"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "hazens_archaic_hexerei_armaments:tactical_crossgun",
+      "count": 1
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 A NeoForge 1.21.1 addon that replaces [Iron's Arms 'n Artifice](https://modrinth.com/mod/irons-artifice) crafting recipes with [Create](https://modrinth.com/mod/create) assembly lines, mixing, and compacting. Guns, bullets, and components have to come out of a factory. It is required on both the client and the server.
 
-Requires NeoForge 21.1.248+, Create 6.0.10+, and Iron's Arms 'n Artifice.
+Requires NeoForge 21.1.248+, Create 6.0.10+, and Iron's Arms 'n Artifice. Optionally supports [Hazen's Archaic Hexerei Armaments](https://github.com/Hazentouvel/Hazen-s-Archaic-Hexerei-Armaments) (see below).
 
 ## Recipes
 
@@ -55,7 +55,24 @@ Sequenced assembly steps are deployer steps unless marked **Saw** (cutting), **P
 | Venom Capsule Modifier | Mixing | Bullet, Glass Bottle, 3× Spider Eye |
 | Bloodletting Tip Modifier | Mixing | 4× Blackpowder, 3× Quartz, Ghast Tear, Redstone |
 
+## Optional: Hazen's Archaic Hexerei Armaments
+
+When [Hazen's Archaic Hexerei Armaments](https://github.com/Hazentouvel/Hazen-s-Archaic-Hexerei-Armaments) (1.21.1 build, 1.0.3+) is installed alongside Iron's Spells 'n Spellbooks and HazentouveLib, its four guns and the Warhog Cog they share also come out of a factory. The recipes override Hexerei's crafting-table recipes by ID and only load when all three mods are present; without them nothing changes and no extra items are registered. Hexerei's armor stays on the crafting table.
+
+Each of these upgrades a finished gun or a factory component. All five are six steps or fewer, so none has a closing press.
+
+| Output | Machine | Inputs |
+| --- | --- | --- |
+| 2× Warhog Cog | Sequenced Assembly, 2 loops | Netherite Ingot → Clockwork Components → Steel Block → Netherite Scrap → Redstone → Press |
+| Royalty's Barrel | Sequenced Assembly | Blunderbuss → Clockwork Components → Mechanical Components → Cinder Essence → Netherite Scrap → Quartz ×2 |
+| Star Cannon | Sequenced Assembly | Clockwork Rifle → Warhog Cog ×2 → Mithril Scrap ×2 → Nether Star → Blackpowder |
+| Super Star Shooter | Sequenced Assembly | Star Cannon → Warhog Cog ×2 → Clockwork Components → Mithril Ingot → Netherite Ingot → Netherite Scrap |
+| Tactical Crossgun | Sequenced Assembly | Warhog Cog → Mithril Ingot → Mithril Scrap ×2 → Cinder Essence → Steel Block → Overcharged Powder Modifier |
+
+Material totals match Hexerei's original shaped recipes (the cog recipe's 2 clockwork components, 2 steel blocks, 2 scrap, 2 redstone, and 1 netherite ingot make 2 cogs).
+
 ## Attribution
 
 - [Create](https://modrinth.com/mod/create) by the Creators of Create: machines and processing recipes.
 - [Iron's Arms 'n Artifice](https://modrinth.com/mod/irons-artifice) by iron431: the guns, ammo, and modifiers this addon rebalances.
+- [Hazen's Archaic Hexerei Armaments](https://github.com/Hazentouvel/Hazen-s-Archaic-Hexerei-Armaments) by Hazen: the optional guns and cog given factory recipes.
