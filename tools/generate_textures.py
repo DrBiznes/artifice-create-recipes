@@ -17,6 +17,7 @@ PALETTE = {
     'red': '#a7483e', 'blue': '#7395a5', 'oil': '#e3a83e',
     'steel': '#9aa5b1', 'steel_light': '#d3dbe3', 'nether': '#4b3a4a', 'star': '#f6e27a',
     'ember': '#e0702a', 'quartz': '#ece6dc', 'mithril': '#7fd0d8',
+    'soul': '#6fe6dc', 'soul_dark': '#2b7378',
 }
 
 
@@ -86,10 +87,7 @@ def gun(kind):
         s.box((8, 5, 9, 6), 'outline')
         s.line([(11, 3), (14, 3), (14, 5)], 'metal')
         s.line([(6, 9), (8, 9), (8, 8)], 'shadow')
-        if kind == 'flintlock':
-            s.line([(5, 5), (4, 3), (6, 2)], 'outline')
-            s.box((5, 3, 6, 3), 'light')
-        elif kind == 'blackpowder_revolver':
+        if kind == 'blackpowder_revolver':
             s.gear(8, 6, 'copper')
             s.box((8, 6, 8, 7), 'outline')
         else:
@@ -199,6 +197,22 @@ def ammo(copper):
     return s
 
 
+def bullet_box():
+    s = Sprite()
+    # An open gold tray, its lid not fitted yet, with rounds standing inside.
+    s.box((1, 7, 14, 14), 'outline')
+    s.box((2, 8, 13, 13), 'brass')
+    s.line([(2, 8), (13, 8)], 'brass_light')
+    s.line([(2, 13), (13, 13)], 'brass_dark')
+    s.box((3, 9, 12, 11), 'wood_dark')
+    for x in (4, 7, 10):
+        s.box((x, 3, x+2, 10), 'outline')
+        s.box((x+1, 5, x+1, 10), 'metal')
+        s.box((x, 3, x+2, 3), 'light')
+    s.box((12, 5, 14, 5), 'brass_dark')  # loose hinge
+    return s
+
+
 def attachment(kind):
     s = Sprite()
     if kind == 'hair_trigger':
@@ -274,6 +288,21 @@ def attachment(kind):
         s.line([(8, 9), (12, 8), (14, 5)], 'outline', 3)
         s.line([(9, 9), (12, 7), (13, 5)], 'metal')
         s.box((1, 11, 3, 14), 'copper')
+    elif kind == 'soulfire_coin':
+        # A half-struck netherite blank: one rough edge, soulfire showing through.
+        s.box((5, 1, 10, 14), 'outline')
+        s.box((3, 2, 12, 13), 'outline')
+        s.box((1, 5, 14, 10), 'outline')
+        s.box((4, 3, 11, 12), 'nether')
+        s.box((2, 6, 13, 9), 'nether')
+        s.line([(4, 3), (11, 3)], '#8d7988')
+        s.line([(2, 6), (2, 9)], '#8d7988')
+        s.box((6, 5, 9, 10), 'soul_dark')
+        s.box((7, 6, 8, 9), 'soul')
+        s.box((7, 7, 7, 8), 'glint')
+        s.line([(12, 11), (14, 13)], 'brass')
+        for p in [(12, 2), (13, 3), (14, 4)]:
+            s.box((*p, *p), (0, 0, 0, 0))
     else:
         raise ValueError(kind)
     return s
@@ -288,6 +317,8 @@ def main():
             sprite = cog()
         elif name in HEX_ITEMS:
             sprite = hexerei_gun(kind)
+        elif kind == 'bullet_box':
+            sprite = bullet_box()
         elif kind.endswith('bullet_batch'):
             sprite = ammo(kind.startswith('copper'))
         elif kind.endswith('components'):

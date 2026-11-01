@@ -1,8 +1,8 @@
 # Artifice Create Recipes
 
-A NeoForge 1.21.1 addon that replaces [Iron's Arms 'n Artifice](https://modrinth.com/mod/irons-artifice) crafting recipes with [Create](https://modrinth.com/mod/create) assembly lines, mixing, and compacting. Guns, bullets, and components have to come out of a factory. It is required on both the client and the server.
+A NeoForge 1.21.1 addon that replaces [Iron's Arms 'n Artifice](https://modrinth.com/mod/irons-artifice) crafting recipes with [Create](https://modrinth.com/mod/create) assembly lines, mixing, and compacting. Guns and components come out of a factory, and bullets can be handloaded at a loss until you build one. It is required on both the client and the server.
 
-Requires NeoForge 21.1.248+, Create 6.0.10+, and Iron's Arms 'n Artifice. Optionally supports [Hazen's Archaic Hexerei Armaments](https://github.com/Hazentouvel/Hazen-s-Archaic-Hexerei-Armaments) (see below).
+Requires NeoForge 21.1.248+, Create 6.0.10+, and Iron's Arms 'n Artifice 1.21.1-1.1.1+. Optionally supports [Hazen's Archaic Hexerei Armaments](https://github.com/Hazentouvel/Hazen-s-Archaic-Hexerei-Armaments) (see below).
 
 ## Recipes
 
@@ -18,8 +18,9 @@ Sequenced assembly steps are deployer steps unless marked **Saw** (cutting), **P
 | Simple Mechanical Components | Sequenced Assembly, 2 loops | Copper Sheet → Andesite Alloy → Cogwheel → Iron Sheet → Blackpowder → Press |
 | Mechanical Components | Sequenced Assembly, 2 loops | Simple Mechanical Components → Brass Sheet → Large Cogwheel → Iron Sheet ×2 → Redstone → Press |
 | Clockwork Components | Sequenced Assembly, 2 loops | Precision Mechanism → Mechanical Components → Brass Sheet ×2 → Golden Sheet → Press |
-| Flintlock | Sequenced Assembly, 2 loops | Flint → Log → Iron Sheet ×2 → Andesite Alloy → Saw → Press |
-| Musket | Sequenced Assembly, 3 loops | Simple Mechanical Components → Log → Iron Sheet ×2 → Andesite Alloy → Saw → Press |
+| Bullet Box | Sequenced Assembly, 2 loops | Bullet → Bullet → Golden Sheet ×3 → Press |
+| Flintlock | Compacting | Flint, 2× Log, 4× Iron Sheet, 2× Andesite Alloy |
+| Musket | Compacting | Simple Mechanical Components, 3× Log, 6× Iron Sheet, 3× Andesite Alloy |
 | Blunderbuss | Sequenced Assembly, 3 loops | Simple Mechanical Components → Andesite Alloy → Log → Copper Sheet → Iron Sheet → Saw → Press |
 | Blackpowder Revolver | Sequenced Assembly, 2 loops | Mechanical Components → Log → Iron Sheet ×2 → Blackpowder → Saw → Press |
 | Six Shooter | Sequenced Assembly, 2 loops | Mechanical Components → Brass Sheet → Log → Iron Sheet ×2 → Saw → Press |
@@ -36,6 +37,7 @@ Sequenced assembly steps are deployer steps unless marked **Saw** (cutting), **P
 | Gun Oil Modifier | Sequenced Assembly | Simple Mechanical Components → Redstone → Fill 250 mB Honey |
 | Chain Shot Modifier | Sequenced Assembly | Bullet → Chain ×4 → Bullet → Press |
 | Hook Shot Modifier | Sequenced Assembly, 2 loops | Bullet → Iron Sheet ×2 → Chain → Andesite Alloy → Press |
+| Soulfire Coin Modifier | Sequenced Assembly | Soul Lantern → Netherite Scrap ×2 → Golden Sheet ×2 → Press |
 | Blackpowder Charge Modifier | Compacting | 8× Blackpowder, 2× String |
 | Scattershot Modifier | Compacting | 4× Bullet, 4× Blackpowder, 2× String |
 | Breaching Shell Modifier | Compacting | 2× Copper Sheet, 2× Iron Sheet, 4× Blackpowder, 3× Flint |
@@ -54,6 +56,20 @@ Sequenced assembly steps are deployer steps unless marked **Saw** (cutting), **P
 | Singularity Charge Modifier | Mixing | 4× Blackpowder, 4× Amethyst Shard, Ender Eye, Brass Sheet |
 | Venom Capsule Modifier | Mixing | Bullet, Glass Bottle, 3× Spider Eye |
 | Bloodletting Tip Modifier | Mixing | 4× Blackpowder, 3× Quartz, Ghast Tear, Redstone |
+
+## Before brass
+
+Deployers need brass, so the first guns stay off the assembly lines. A press, a basin, and a mixer are enough for the Flintlock and Musket above, and for these routes:
+
+| Output | Machine | Inputs |
+| --- | --- | --- |
+| Simple Mechanical Components | Compacting | 8× Copper Sheet, 2× Andesite Alloy, Blackpowder |
+| 4× Bullet | Crafting Table | Iron Sheet, Gunpowder |
+| 2× Bullet | Crafting Table | Copper Sheet, Gunpowder |
+| 2× Bullet | Crafting Table | Iron Sheet, 2× Blackpowder |
+| 1× Bullet | Crafting Table | Copper Sheet, 2× Blackpowder |
+
+Handloading is always worse than the assembly lines: one sheet there makes 24 bullets, and gunpowder is worth 8 blackpowder in a mixer.
 
 ## Optional: Hazen's Archaic Hexerei Armaments
 

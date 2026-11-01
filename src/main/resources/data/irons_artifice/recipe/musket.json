@@ -1,103 +1,44 @@
 {
-  "type": "create:sequenced_assembly",
-  "ingredient": {
-    "item": "irons_artifice:simple_mechanical_components"
-  },
-  "transitional_item": {
-    "id": "artifice_create_recipes:incomplete_musket"
-  },
-  "loops": 3,
-  "sequence": [
+  "type": "create:compacting",
+  "ingredients": [
     {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_musket"
-        },
-        {
-          "tag": "minecraft:logs"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_musket"
-        }
-      ]
+      "item": "irons_artifice:simple_mechanical_components"
     },
     {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_musket"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_musket"
-        }
-      ]
+      "tag": "minecraft:logs"
     },
     {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_musket"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_musket"
-        }
-      ]
+      "tag": "minecraft:logs"
     },
     {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_musket"
-        },
-        {
-          "item": "create:andesite_alloy"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_musket"
-        }
-      ]
+      "tag": "minecraft:logs"
     },
     {
-      "type": "create:cutting",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_musket"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_musket"
-        }
-      ],
-      "processing_time": 50
+      "tag": "c:plates/iron"
     },
     {
-      "type": "create:pressing",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_musket"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_musket"
-        }
-      ]
+      "tag": "c:plates/iron"
+    },
+    {
+      "tag": "c:plates/iron"
+    },
+    {
+      "tag": "c:plates/iron"
+    },
+    {
+      "tag": "c:plates/iron"
+    },
+    {
+      "tag": "c:plates/iron"
+    },
+    {
+      "item": "create:andesite_alloy"
+    },
+    {
+      "item": "create:andesite_alloy"
+    },
+    {
+      "item": "create:andesite_alloy"
     }
   ],
   "results": [

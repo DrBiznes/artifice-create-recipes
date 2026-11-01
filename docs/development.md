@@ -9,7 +9,7 @@ Requires a **JDK 21**. Open this directory as a Gradle project in IntelliJ IDEA 
 .\gradlew.bat runGameTestServer
 ```
 
-On Linux/macOS use `bash ./gradlew`. `build` produces `build/libs/artifice_create_recipes-<version>.jar`. `runGameTestServer` loads a development-only test mod in `run-gametest`. It checks the live recipe manager, tag resolution, removal of the original crafting recipes, all 23 Create assembly progressions (plus the 5 optional Hexerei ones when that mod is installed; without it the tests assert none of its recipes or workpieces leak), starter selection, material budgets, workpiece registration, and advancement suppression. These tests are not packaged in the release jar.
+On Linux/macOS use `bash ./gradlew`. `build` produces `build/libs/artifice_create_recipes-<version>.jar`. `runGameTestServer` loads a development-only test mod in `run-gametest`. It checks the live recipe manager, tag resolution, removal of the original crafting recipes, all 23 Create assembly progressions (plus the 5 optional Hexerei ones when that mod is installed; without it the tests assert none of its recipes or workpieces leak), starter selection, material budgets, the deployer-free early routes, workpiece registration, and advancement suppression. These tests are not packaged in the release jar.
 
 ## Regenerating resources
 
@@ -22,6 +22,10 @@ python tools/verify_resources.py
 
 Texture and branding generation require Pillow 10.1+. The rest uses only the standard library. All output is deterministic and checked in. Edit the generators rather than the generated JSON or PNGs. The branding script downloads the Rye font (OFL) into the ignored `.research/` directory.
 
+## Early routes
+
+`data/artifice_create_recipes/recipe` holds the additive pre-brass routes: handloaded bullets and compacted simple components. They use this mod's namespace because they replace nothing upstream, while `data/irons_artifice/recipe` stays one-to-one with upstream recipe IDs. The flintlock and musket keep their upstream IDs as compacting recipes. Nothing on these routes may need a deployer, and `early_routes_need_no_deployer` guards that.
+
 ## Optional Hexerei support
 
 The five Hexerei recipes are generated into `data/hazens_archaic_hexerei_armaments/recipe/crafting/...` with the same IDs as Hexerei's own, so they replace them. Each carries `neoforge:mod_loaded` conditions for Hexerei, Iron's Spells 'n Spellbooks, and HazentouveLib, and `neoforge.mods.toml` declares Hexerei as an optional `AFTER` dependency so this mod's data wins. The `incomplete_*` workpieces for them are listed in `WorkpieceNames.HEXEREI` and registered only when Hexerei is loaded. The dev environment does not include Hexerei, so `runGameTestServer` exercises the absent case; to check the present case, drop the Hexerei, Spellbooks, and HazentouveLib jars (plus Curios, Caelus, and Player Animator, which Spellbooks needs) into `run-gametest/mods`. Hexerei 1.0.3 needs HazentouveLib 1.0.11 or later; earlier builds lack its steel items and block-entity base class. Verified with Hexerei 1.0.3, HazentouveLib 1.0.11, Iron's Spells 'n Spellbooks 3.16.3, Curios 9.5.1, Caelus 7.0.1, and Player Animator 2.0.4.
@@ -33,7 +37,7 @@ The five Hexerei recipes are generated into `data/hazens_archaic_hexerei_armamen
 | Minecraft | 1.21.1 |
 | NeoForge | 21.1.248 (supports 21.1.248 and later) |
 | Create | 6.0.10-281 (supports 6.0.10 and later 6.0.x) |
-| Iron's Arms 'n Artifice | 1.21.1-1.0.1.1 |
+| Iron's Arms 'n Artifice | 1.21.1-1.1.1 (required minimum; earlier builds lack the Bullet Box and Soulfire Coin) |
 | GeckoLib | 4.9.3 |
 | Iron's Library | 1.21.1-2.2.0 |
 | ModDevGradle | 2.0.147 |

@@ -1,103 +1,32 @@
 {
-  "type": "create:sequenced_assembly",
-  "ingredient": {
-    "item": "minecraft:flint"
-  },
-  "transitional_item": {
-    "id": "artifice_create_recipes:incomplete_flintlock"
-  },
-  "loops": 2,
-  "sequence": [
+  "type": "create:compacting",
+  "ingredients": [
     {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_flintlock"
-        },
-        {
-          "tag": "minecraft:logs"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_flintlock"
-        }
-      ]
+      "item": "minecraft:flint"
     },
     {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_flintlock"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_flintlock"
-        }
-      ]
+      "tag": "minecraft:logs"
     },
     {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_flintlock"
-        },
-        {
-          "tag": "c:plates/iron"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_flintlock"
-        }
-      ]
+      "tag": "minecraft:logs"
     },
     {
-      "type": "create:deploying",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_flintlock"
-        },
-        {
-          "item": "create:andesite_alloy"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_flintlock"
-        }
-      ]
+      "tag": "c:plates/iron"
     },
     {
-      "type": "create:cutting",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_flintlock"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_flintlock"
-        }
-      ],
-      "processing_time": 50
+      "tag": "c:plates/iron"
     },
     {
-      "type": "create:pressing",
-      "ingredients": [
-        {
-          "item": "artifice_create_recipes:incomplete_flintlock"
-        }
-      ],
-      "results": [
-        {
-          "id": "artifice_create_recipes:incomplete_flintlock"
-        }
-      ]
+      "tag": "c:plates/iron"
+    },
+    {
+      "tag": "c:plates/iron"
+    },
+    {
+      "item": "create:andesite_alloy"
+    },
+    {
+      "item": "create:andesite_alloy"
     }
   ],
   "results": [

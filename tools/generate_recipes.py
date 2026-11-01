@@ -59,6 +59,11 @@ ITEMS = {}
 # Hexerei overrides, keyed by recipe path under data/<HEX>/recipe.
 HEX_RECIPES = {}
 HEX_ITEMS = {}
+# Additive pre-brass routes. They live under this mod's namespace because they
+# replace nothing upstream; RECIPES stays one-to-one with upstream recipe IDs.
+EARLY_RECIPES = {}
+# Upstream files these unlocks outside recipes/misc.
+UNLOCK_CATEGORY = {'bullet_box': 'tools'}
 
 
 def assembly(recipe_id, start, steps, loops=1, output=None, count=1, incomplete=None, addon=None):
@@ -90,7 +95,14 @@ def assembly(recipe_id, start, steps, loops=1, output=None, count=1, incomplete=
         RECIPES[recipe_id] = recipe
 
 
-def basin(recipe_id, kind, inputs, output=None, count=1, heat=None):
+def handloaded(recipe_id, metal, powder, powder_count, count):
+    EARLY_RECIPES[recipe_id] = {
+        'type': 'minecraft:crafting_shapeless', 'category': 'equipment',
+        'ingredients': [ingredient(metal)] + [ingredient(powder)] * powder_count,
+        'result': {'id': IA + 'bullet', 'count': count}}
+
+
+def basin(recipe_id, kind, inputs, output=None, count=1, heat=None, target=RECIPES):
     recipe = {'type': 'create:' + kind,
               'ingredients': [ingredient(name) for name, quantity in inputs for _ in range(quantity)],
               'results': [{'id': IA + (output or recipe_id), 'count': count}]}
@@ -98,7 +110,7 @@ def basin(recipe_id, kind, inputs, output=None, count=1, heat=None):
         recipe['processing_time'] = 100
     if heat:
         recipe['heat_requirement'] = heat
-    RECIPES[recipe_id] = recipe
+    target[recipe_id] = recipe
 
 
 basin('blackpowder_from_charcoal', 'mixing', [('charcoal', 2)], 'blackpowder')
@@ -109,13 +121,25 @@ assembly('bullet_from_copper', 'copper', D('powder', 3) + P, 2, 'bullet', 6, 'in
 assembly('simple_mechanical_components', 'copper', D('alloy') + D('cog') + D('iron') + D('powder') + P, 2)
 assembly('mechanical_components', 'simple', D('brass') + D('large_cog') + D('iron', 2) + D('redstone') + P, 2)
 assembly('clockwork_components', 'precision', D('mechanical') + D('brass', 2) + D('gold') + P, 2)
+assembly('bullet_box', 'bullet', D('bullet') + D('gold', 3) + P, 2)
+
+# Deployers need brass, so everything an early gunsmith needs stays on andesite
+# age machines: press, basin, and mixer. These routes must not need a deployer.
+# Handloading always loses to the assembly lines: gunpowder gives half of what
+# a rich mix would, and blackpowder keeps its cost but burns 12x the metal.
+handloaded('bullet_handloaded_iron_from_gunpowder', 'iron', 'gunpowder', 1, 4)
+handloaded('bullet_handloaded_copper_from_gunpowder', 'copper', 'gunpowder', 1, 2)
+handloaded('bullet_handloaded_iron', 'iron', 'powder', 2, 2)
+handloaded('bullet_handloaded_copper', 'copper', 'powder', 2, 1)
+basin('simple_mechanical_components_compacted', 'compacting', [('copper', 8), ('alloy', 2), ('powder', 1)],
+      'simple_mechanical_components', target=EARLY_RECIPES)
+basin('flintlock', 'compacting', [('flint', 1), ('log', 2), ('iron', 4), ('alloy', 2)])
+basin('musket', 'compacting', [('simple', 1), ('log', 3), ('iron', 6), ('alloy', 3)])
 
 # Create's viewer fits six steps, so costs repeat through loops and one-off
 # parts become the starting item. Short guns loop twice, long guns three times;
 # each loop deploys one log. Start + first deployment stay unique per recipe.
 WOOD = D('log') + D('iron', 2)
-assembly('flintlock', 'flint', WOOD + D('alloy') + C + P, 2)
-assembly('musket', 'simple', WOOD + D('alloy') + C + P, 3)
 assembly('blunderbuss', 'simple', D('alloy') + D('log') + D('copper') + D('iron') + C + P, 3)
 assembly('blackpowder_revolver', 'mechanical', WOOD + D('powder') + C + P, 2)
 assembly('six_shooter', 'mechanical', D('brass') + WOOD + C + P, 2)
@@ -134,6 +158,7 @@ ASSEMBLY_MODIFIERS = {
     'gun_oil': ('simple', D('redstone') + HONEY),
     'chain_shot': ('bullet', D('chain', 4) + D('bullet') + P),
     'hook_shot': ('bullet', D('iron', 2) + D('chain') + D('alloy') + P, 2),
+    'soulfire_coin': ('soul_lantern', D('netherite_scrap', 2) + D('gold', 2) + P),
 }
 for name, (start, steps, *loops) in ASSEMBLY_MODIFIERS.items():
     assembly(name + '_modifier', start, steps, *loops)
@@ -181,13 +206,28 @@ for name, inputs in MIXING.items():
 
 
 def main():
-    assert len(RECIPES) == 44 and len(ITEMS) == 23 and len(HEX_RECIPES) == 5 and len(HEX_ITEMS) == 5
+    assert len(RECIPES) == 46 and len(ITEMS) == 23 and len(HEX_RECIPES) == 5 and len(HEX_ITEMS) == 5
+    assert len(EARLY_RECIPES) == 5
     for name, recipe in RECIPES.items():
         write_json(RES / 'data/irons_artifice/recipe' / (name + '.json'), recipe)
         # These are processing recipes, not recipe-book crafting unlocks. Override
         # only their old recipe-unlock advancements, leaving gameplay goals alone.
-        write_json(RES / 'data/irons_artifice/advancement/recipes/misc' / (name + '.json'),
+        write_json(RES / 'data/irons_artifice/advancement/recipes' / UNLOCK_CATEGORY.get(name, 'misc') / (name + '.json'),
                    {'neoforge:conditions': [{'type': 'neoforge:false'}]})
+    for name, recipe in EARLY_RECIPES.items():
+        write_json(RES / 'data' / MOD / 'recipe' / (name + '.json'), recipe)
+        if recipe['type'] != 'minecraft:crafting_shapeless':
+            continue
+        # Handloading stays a real table recipe, so it shows up in the recipe book.
+        recipe_id = MOD + ':' + name
+        sheet = '#' + recipe['ingredients'][0]['tag']
+        write_json(RES / 'data' / MOD / 'advancement/recipes/combat' / (name + '.json'), {
+            'parent': 'minecraft:recipes/root',
+            'criteria': {
+                'has_sheet': {'trigger': 'minecraft:inventory_changed', 'conditions': {'items': [{'items': sheet}]}},
+                'has_the_recipe': {'trigger': 'minecraft:recipe_unlocked', 'conditions': {'recipe': recipe_id}}},
+            'requirements': [['has_sheet', 'has_the_recipe']],
+            'rewards': {'recipes': [recipe_id]}})
     for path in HEX_RECIPES:
         write_json(RES / 'data' / HEX / 'recipe' / (path + '.json'), HEX_RECIPES[path])
         # Same suppression as above; the old shaped recipe's unlock is stale.
@@ -221,7 +261,8 @@ public final class WorkpieceNames {{
 }}
 '''
     (ROOT / 'src/main/java/dev/jam/artificecreaterecipes/WorkpieceNames.java').write_text(java, encoding='utf-8')
-    print(f'Generated {len(RECIPES)} replacements and {len(ITEMS)} workpieces, plus {len(HEX_RECIPES)} optional Hexerei replacements.')
+    print(f'Generated {len(RECIPES)} replacements, {len(EARLY_RECIPES)} early routes, and {len(ITEMS)} workpieces, '
+          f'plus {len(HEX_RECIPES)} optional Hexerei replacements.')
 
 
 if __name__ == '__main__':

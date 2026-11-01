@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "tag": "c:plates/copper"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    }
+  ],
+  "result": {
+    "id": "irons_artifice:bullet",
+    "count": 1
+  }
+}

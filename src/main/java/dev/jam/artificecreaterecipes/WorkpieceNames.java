@@ -10,8 +10,7 @@ public final class WorkpieceNames {
             "incomplete_simple_mechanical_components",
             "incomplete_mechanical_components",
             "incomplete_clockwork_components",
-            "incomplete_flintlock",
-            "incomplete_musket",
+            "incomplete_bullet_box",
             "incomplete_blunderbuss",
             "incomplete_blackpowder_revolver",
             "incomplete_six_shooter",
@@ -27,7 +26,8 @@ public final class WorkpieceNames {
             "incomplete_suppressor_attachment_modifier",
             "incomplete_gun_oil_modifier",
             "incomplete_chain_shot_modifier",
-            "incomplete_hook_shot_modifier"
+            "incomplete_hook_shot_modifier",
+            "incomplete_soulfire_coin_modifier"
     );
     /** Registered only when Hazen's Archaic Hexerei Armaments is installed. */
     public static final List<String> HEXEREI = List.of(

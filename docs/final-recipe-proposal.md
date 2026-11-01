@@ -4,6 +4,8 @@ Status: implemented. Resource checks and four server GameTests passed, including
 
 > **Revised for 0.1.0:** Create's recipe viewer fits only six sequence steps. Long sequences were rebuilt as short loops, and one-off parts became starting items. Guns now use 2 logs (compact) or 3 logs (long), and the clockwork rifle uses 3 netherite scrap instead of an ingot. Some minor deploys were dropped. The README recipe table and `tools/generate_recipes.py` are authoritative where they differ from the gun, component, and modifier sequences below.
 
+> **Revised for 0.1.2:** Player feedback showed that deployers locked the first guns and all ammo behind brass. The flintlock and musket are now compacting recipes, simple components gained a costly compacting route, and bullets can be handloaded from sheets at the crafting table. The Artifice 1.1.1 update added assembly lines for the Bullet Box and Soulfire Coin. The README tables are authoritative, and this reverses the "no alternative manual production routes" rule below.
+
 ## Rules
 
 - Replace all 44 existing crafting-table recipes for blackpowder, bullets, components, guns, and modifiers. Preserve the two hat recipes. The replacement set also has 44 recipes: 23 sequenced assemblies, 11 compacting recipes, and 10 mixing recipes.

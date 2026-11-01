@@ -17,6 +17,9 @@ HEX = 'hazens_archaic_hexerei_armaments'
 HEX_RECIPES = ['crafting/materials/warhog_cog', 'crafting/guns/royaltys_barrel', 'crafting/guns/star_cannon',
                'crafting/guns/super_star_shooter', 'crafting/guns/tactical_crossgun']
 HEX_MODS = {HEX, 'irons_spellbooks', 'hazentouvelib'}
+HANDLOADED = {'bullet_handloaded_iron_from_gunpowder': 4, 'bullet_handloaded_copper_from_gunpowder': 2,
+              'bullet_handloaded_iron': 2, 'bullet_handloaded_copper': 1}
+EARLY = {*HANDLOADED, 'simple_mechanical_components_compacted'}
 
 
 def main():
@@ -50,8 +53,19 @@ def main():
             assert step['ingredients'][0] == {'item': item}
             assert step['results'] == [{'id': item}]
             assert step['type'] in {'create:deploying', 'create:pressing', 'create:cutting', 'create:filling'}
-    assert types == {'create:sequenced_assembly': 23, 'create:compacting': 11, 'create:mixing': 10}, types
+    assert types == {'create:sequenced_assembly': 23, 'create:compacting': 13, 'create:mixing': 10}, types
     assert len(hex_workpieces) == 5 and len(signatures) == 28
+    # Additive early routes never occupy an upstream ID and never need a deployer.
+    early = {f.stem: json.loads(f.read_text()) for f in (RES / 'data' / MOD / 'recipe').glob('*.json')}
+    assert set(early) == EARLY and not EARLY & original
+    for name, count in HANDLOADED.items():
+        assert early[name]['type'] == 'minecraft:crafting_shapeless'
+        assert early[name]['result'] == {'id': 'irons_artifice:bullet', 'count': count}
+        unlock = json.loads((RES / 'data' / MOD / 'advancement/recipes/combat' / (name + '.json')).read_text())
+        assert unlock['rewards']['recipes'] == [MOD + ':' + name]
+    assert early['simple_mechanical_components_compacted']['type'] == 'create:compacting'
+    for name in ('flintlock', 'musket'):
+        assert json.loads((RES / 'data/irons_artifice/recipe' / (name + '.json')).read_text())['type'] == 'create:compacting'
     expected_names = {i.split(':')[1] for i in workpieces | hex_workpieces}
     assets = RES / 'assets' / MOD
     assert {p.stem for p in (assets / 'textures/item').glob('*.png')} == expected_names
@@ -68,12 +82,13 @@ def main():
         model = json.loads((assets / 'models/item' / (item + '.json')).read_text())
         assert model['textures']['layer0'] == MOD + ':item/' + item
     assert len(hashes) == 28, 'Every workpiece needs a distinct texture'
-    overrides = list((RES / 'data/irons_artifice/advancement/recipes/misc').glob('*.json'))
-    assert {f.stem for f in overrides} == {f.stem for f in files}
+    unlocks = RES / 'data/irons_artifice/advancement/recipes'
+    overrides = [*(unlocks / 'misc').glob('*.json'), *(unlocks / 'tools').glob('*.json')]
+    assert sorted(f.stem for f in overrides) == sorted(f.stem for f in files)
     hex_overrides = [RES / 'data' / HEX / 'advancement/recipes/combat' / (r + '.json') for r in HEX_RECIPES]
     for f in overrides + hex_overrides:
         assert json.loads(f.read_text()) == {'neoforge:conditions': [{'type': 'neoforge:false'}]}
-    print('PASS: all 44 overrides + 5 optional Hexerei overrides, 28 unique 16x16 RGBA sprites/models/translations, unique assembly starters, and 49 stale unlock suppressions.')
+    print('PASS: all 46 overrides + 5 optional Hexerei overrides + 5 early routes, 28 unique 16x16 RGBA sprites/models/translations, unique assembly starters, and 51 stale unlock suppressions.')
 
 
 if __name__ == '__main__':

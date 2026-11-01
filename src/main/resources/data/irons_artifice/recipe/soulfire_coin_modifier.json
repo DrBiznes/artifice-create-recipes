@@ -1,0 +1,95 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "minecraft:soul_lantern"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_soulfire_coin_modifier"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_soulfire_coin_modifier"
+        },
+        {
+          "item": "minecraft:netherite_scrap"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_soulfire_coin_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_soulfire_coin_modifier"
+        },
+        {
+          "item": "minecraft:netherite_scrap"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_soulfire_coin_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_soulfire_coin_modifier"
+        },
+        {
+          "tag": "c:plates/gold"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_soulfire_coin_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_soulfire_coin_modifier"
+        },
+        {
+          "tag": "c:plates/gold"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_soulfire_coin_modifier"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_soulfire_coin_modifier"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_soulfire_coin_modifier"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:soulfire_coin_modifier",
+      "count": 1
+    }
+  ]
+}

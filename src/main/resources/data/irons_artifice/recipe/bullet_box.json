@@ -1,0 +1,95 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "irons_artifice:bullet"
+  },
+  "transitional_item": {
+    "id": "artifice_create_recipes:incomplete_bullet_box"
+  },
+  "loops": 2,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_bullet_box"
+        },
+        {
+          "item": "irons_artifice:bullet"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_bullet_box"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_bullet_box"
+        },
+        {
+          "tag": "c:plates/gold"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_bullet_box"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_bullet_box"
+        },
+        {
+          "tag": "c:plates/gold"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_bullet_box"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_bullet_box"
+        },
+        {
+          "tag": "c:plates/gold"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_bullet_box"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "artifice_create_recipes:incomplete_bullet_box"
+        }
+      ],
+      "results": [
+        {
+          "id": "artifice_create_recipes:incomplete_bullet_box"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:bullet_box",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "tag": "c:plates/copper"
+    },
+    {
+      "tag": "c:plates/copper"
+    },
+    {
+      "tag": "c:plates/copper"
+    },
+    {
+      "tag": "c:plates/copper"
+    },
+    {
+      "tag": "c:plates/copper"
+    },
+    {
+      "tag": "c:plates/copper"
+    },
+    {
+      "tag": "c:plates/copper"
+    },
+    {
+      "tag": "c:plates/copper"
+    },
+    {
+      "item": "create:andesite_alloy"
+    },
+    {
+      "item": "create:andesite_alloy"
+    },
+    {
+      "item": "irons_artifice:blackpowder"
+    }
+  ],
+  "results": [
+    {
+      "id": "irons_artifice:simple_mechanical_components",
+      "count": 1
+    }
+  ]
+}

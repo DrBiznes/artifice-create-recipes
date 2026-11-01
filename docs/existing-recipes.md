@@ -1,8 +1,8 @@
 # Existing Iron's Arms 'n Artifice recipes
 
-Snapshot: local repository commit `e8d6cf2e4d3f72cb2d1d65cb053bcdc7af9d59c5`, mod version `1.21.1-1.0.1.1`. The checkout was clean when inspected.
+Snapshot: local repository commit `e8d6cf2e4d3f72cb2d1d65cb053bcdc7af9d59c5`, mod version `1.21.1-1.0.1.1`. The checkout was clean when inspected. Updated for `1.21.1-1.1.1` from the released jar: 1.1.0 added `bullet_box` and `soulfire_coin_modifier`, and no other recipe changed.
 
-46 recipes: 44 shaped and 2 shapeless. Every recipe produces one item unless the output column says otherwise. Ingredients below are counted from generated JSON, including repeated pattern symbols. `#` denotes an item tag. All recipe IDs have the `irons_artifice:` namespace.
+48 recipes: 46 shaped and 2 shapeless. Every recipe produces one item unless the output column says otherwise. Ingredients below are counted from generated JSON, including repeated pattern symbols. `#` denotes an item tag. All recipe IDs have the `irons_artifice:` namespace.
 
 | Recipe ID | Type | Ingredients | Output |
 | --- | --- | --- | --- |
@@ -18,6 +18,7 @@ Snapshot: local repository commit `e8d6cf2e4d3f72cb2d1d65cb053bcdc7af9d59c5`, mo
 | `blunderbuss` | shaped | 4 x `#c:ingots/iron`, 1 x `#minecraft:logs`, 2 x `irons_artifice:simple_mechanical_components` | 1 x `irons_artifice:blunderbuss` |
 | `breaching_shell_modifier` | shaped | 3 x `#c:ingots/copper`, 1 x `irons_artifice:blackpowder`, 3 x `minecraft:flint` | 1 x `irons_artifice:breaching_shell_modifier` |
 | `buffer_spring_modifier` | shaped | 6 x `#c:ingots/iron`, 1 x `irons_artifice:simple_mechanical_components` | 1 x `irons_artifice:buffer_spring_modifier` |
+| `bullet_box` | shaped | 6 x `#c:ingots/gold`, 3 x `irons_artifice:bullet` | 1 x `irons_artifice:bullet_box` |
 | `bullet_from_copper` | shaped | 1 x `#c:ingots/copper`, 1 x `irons_artifice:blackpowder` | 4 x `irons_artifice:bullet` |
 | `bullet_from_iron` | shaped | 1 x `#c:ingots/iron`, 1 x `irons_artifice:blackpowder` | 16 x `irons_artifice:bullet` |
 | `chain_shot_modifier` | shaped | 2 x `irons_artifice:bullet`, 5 x `minecraft:chain` | 1 x `irons_artifice:chain_shot_modifier` |
@@ -44,6 +45,7 @@ Snapshot: local repository commit `e8d6cf2e4d3f72cb2d1d65cb053bcdc7af9d59c5`, mo
 | `simple_mechanical_components` | shaped | 8 x `#c:ingots/copper`, 1 x `irons_artifice:blackpowder` | 1 x `irons_artifice:simple_mechanical_components` |
 | `singularity_charge_modifier` | shaped | 2 x `irons_artifice:blackpowder`, 4 x `minecraft:amethyst_shard`, 1 x `minecraft:ender_eye` | 1 x `irons_artifice:singularity_charge_modifier` |
 | `six_shooter` | shaped | 2 x `#c:ingots/iron`, 1 x `#minecraft:logs`, 1 x `irons_artifice:mechanical_components`, 1 x `minecraft:hopper` | 1 x `irons_artifice:six_shooter` |
+| `soulfire_coin_modifier` | shaped | 2 x `minecraft:netherite_scrap`, 1 x `minecraft:soul_lantern` | 1 x `irons_artifice:soulfire_coin_modifier` |
 | `spiral_tip_modifier` | shaped | 2 x `#c:ingots/iron`, 1 x `irons_artifice:blackpowder`, 1 x `minecraft:nautilus_shell` | 1 x `irons_artifice:spiral_tip_modifier` |
 | `steel_core_modifier` | shaped | 3 x `#c:ingots/iron`, 1 x `#c:storage_blocks/iron`, 1 x `irons_artifice:blackpowder` | 1 x `irons_artifice:steel_core_modifier` |
 | `suppressor_attachment_modifier` | shaped | 1 x `#c:ingots/gold`, 1 x `#c:leathers`, 1 x `irons_artifice:clockwork_components` | 1 x `irons_artifice:suppressor_attachment_modifier` |

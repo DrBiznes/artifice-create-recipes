@@ -35,6 +35,7 @@ public final class FactoryTests {
         return List.of(test("replacements_and_hats", FactoryTests::replacements),
                 test("every_sequence_completes", FactoryTests::sequences),
                 test("agreed_material_costs", FactoryTests::costs),
+                test("early_routes_need_no_deployer", FactoryTests::earlyRoutes),
                 test("workpieces_and_unlocks", FactoryTests::workpieces),
                 test("optional_hexerei_support", FactoryTests::hexerei));
     }
@@ -74,7 +75,7 @@ public final class FactoryTests {
             }
         }
         h.assertTrue(counts.equals(Map.of("create:sequenced_assembly", 23, "create:mixing", 10,
-                "create:compacting", 11, "minecraft:crafting", 2)), "All 46 recipes loaded with replacement types: " + counts);
+                "create:compacting", 13, "minecraft:crafting", 2)), "All 48 recipes loaded with replacement types: " + counts);
         h.assertTrue(recipe(h, "cowboy_hat") instanceof ShapedRecipe && recipe(h, "tricorne") instanceof ShapedRecipe, "Hats stay craftable");
         h.succeed();
     }
@@ -147,9 +148,13 @@ public final class FactoryTests {
         cost(h, "bullet_from_copper", "create:copper_sheet", 1);
         h.assertTrue(recipe(h, "bullet_from_iron").getResultItem(h.getLevel().registryAccess()).getCount() == 24, "24 iron bullets");
         h.assertTrue(recipe(h, "bullet_from_copper").getResultItem(h.getLevel().registryAccess()).getCount() == 6, "6 copper bullets");
-        for (String gun : List.of("flintlock", "blackpowder_revolver", "six_shooter")) cost(h, gun, "minecraft:oak_log", 2);
-        for (String gun : List.of("musket", "blunderbuss", "arquebus", "clockwork_rifle")) cost(h, gun, "minecraft:oak_log", 3);
+        for (String gun : List.of("blackpowder_revolver", "six_shooter")) cost(h, gun, "minecraft:oak_log", 2);
+        for (String gun : List.of("blunderbuss", "arquebus", "clockwork_rifle")) cost(h, gun, "minecraft:oak_log", 3);
         cost(h, "clockwork_rifle", "minecraft:netherite_scrap", 3);
+        cost(h, "bullet_box", "irons_artifice:bullet", 3);
+        cost(h, "bullet_box", "create:golden_sheet", 6);
+        cost(h, "soulfire_coin_modifier", "minecraft:soul_lantern", 1);
+        cost(h, "soulfire_coin_modifier", "minecraft:netherite_scrap", 2);
         cost(h, "simple_mechanical_components", "create:copper_sheet", 1);
         cost(h, "simple_mechanical_components", "create:andesite_alloy", 2);
         cost(h, "mechanical_components", "irons_artifice:simple_mechanical_components", 1);
@@ -163,6 +168,41 @@ public final class FactoryTests {
         var fill = oil.getSequence().getLast().getRecipe();
         h.assertTrue(fill.getType() == AllRecipeTypes.FILLING.getType() && fill.getFluidIngredients().getFirst().amount() == 250,
                 "Oil requires 250 mB fluid filling");
+        h.succeed();
+    }
+
+    private static int inputs(Recipe<?> r, String item) {
+        var stack = BuiltInRegistries.ITEM.get(ResourceLocation.parse(item)).getDefaultInstance();
+        return (int) r.getIngredients().stream().filter(i -> i.test(stack)).count();
+    }
+
+    private static void handloaded(GameTestHelper h, String name, String sheet, String powder, int powders, int bullets) {
+        var r = recipe(h, ADDON + ":" + name);
+        var result = r.getResultItem(h.getLevel().registryAccess());
+        h.assertTrue(r instanceof ShapelessRecipe, "Handloading stays on the crafting table: " + name);
+        h.assertTrue(inputs(r, sheet) == 1 && inputs(r, powder) == powders, "Handloading inputs: " + name);
+        h.assertTrue(result.is(BuiltInRegistries.ITEM.get(id("bullet"))) && result.getCount() == bullets, "Handloading yield: " + name);
+    }
+
+    /** Deployers need brass, so the first guns and their ammo must never route through one. */
+    private static void earlyRoutes(GameTestHelper h) {
+        for (String name : List.of("flintlock", "musket", ADDON + ":simple_mechanical_components_compacted")) {
+            h.assertTrue(recipe(h, name).getType() == AllRecipeTypes.COMPACTING.getType(), "Pressed in a basin: " + name);
+        }
+        var flintlock = recipe(h, "flintlock");
+        h.assertTrue(inputs(flintlock, "minecraft:flint") == 1 && inputs(flintlock, "minecraft:oak_log") == 2
+                && inputs(flintlock, "create:iron_sheet") == 4 && inputs(flintlock, "create:andesite_alloy") == 2, "Flintlock cost");
+        var musket = recipe(h, "musket");
+        h.assertTrue(inputs(musket, "irons_artifice:simple_mechanical_components") == 1 && inputs(musket, "minecraft:oak_log") == 3
+                && inputs(musket, "create:iron_sheet") == 6 && inputs(musket, "create:andesite_alloy") == 3, "Musket cost");
+        var simple = recipe(h, ADDON + ":simple_mechanical_components_compacted");
+        h.assertTrue(simple.getResultItem(h.getLevel().registryAccess()).is(BuiltInRegistries.ITEM.get(id("simple_mechanical_components"))),
+                "Early route makes simple components");
+        h.assertTrue(inputs(simple, "create:copper_sheet") == 8 && inputs(simple, "irons_artifice:blackpowder") == 1, "Simple component cost");
+        handloaded(h, "bullet_handloaded_iron_from_gunpowder", "create:iron_sheet", "minecraft:gunpowder", 1, 4);
+        handloaded(h, "bullet_handloaded_copper_from_gunpowder", "create:copper_sheet", "minecraft:gunpowder", 1, 2);
+        handloaded(h, "bullet_handloaded_iron", "create:iron_sheet", "irons_artifice:blackpowder", 2, 2);
+        handloaded(h, "bullet_handloaded_copper", "create:copper_sheet", "irons_artifice:blackpowder", 2, 1);
         h.succeed();
     }
 
@@ -182,6 +222,10 @@ public final class FactoryTests {
                 h.assertTrue(h.getLevel().getServer().getAdvancements().get(oldUnlock) == null, "No stale crafting unlock: " + oldUnlock);
             }
         }
+        h.assertTrue(h.getLevel().getServer().getAdvancements().get(id("irons_artifice:recipes/tools/bullet_box")) == null,
+                "No stale bullet box unlock");
+        h.assertTrue(h.getLevel().getServer().getAdvancements().get(id(ADDON + ":recipes/combat/bullet_handloaded_iron")) != null,
+                "Handloading unlocks in the recipe book");
         h.assertTrue(h.getLevel().getServer().getAdvancements().get(id("irons_artifice:recipes/misc/cowboy_hat")) != null,
                 "Hat recipe advancement retained");
         h.succeed();
